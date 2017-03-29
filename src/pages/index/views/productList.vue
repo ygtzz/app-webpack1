@@ -1,6 +1,6 @@
 <template>
     <div class="productList">
-        <div class="banner tc">
+        <div class="productList-banner tc">
             <p class="f60">7%稳赚一年</p>
             <p class="f28 title2">69%用户的安心之选，投5万赚3500元</p>
             <div class="btn-wrap">
@@ -28,7 +28,7 @@
                 <div class="dib right">
                     <p>
                         <span class="f50">65天</span>
-                        <span class="f22 icon icon-limit">限量爆款</span>
+                        <span class="icon icon-limit">限量爆款</span>
                     </p>
                     <p class="f24 g9">天金所发行 · 长安保险承保</p>
                 </div>
@@ -97,28 +97,28 @@
     .productList{
         background-color:#f2f2f2;
     }
-    .banner{padding-top:68px;padding-bottom:50px;position:relative;
-        background-color:rgba(0,0,0,.9);color:#fff;
-        .title2{margin-top:18px;}    
-        .btn-wrap{margin-top:39px;}
-        .bg{background-image:url('./productList/banner.png');
-            width:100%;height:100%;top:0;left:0;
-            position:absolute;}     
+    .productList-banner{padding-top:68px;padding-bottom:50px;position:relative;
+            background-color:rgba(0,0,0,.9);color:#fff;
+            .title2{margin-top:18px;}    
+            .btn-wrap{margin-top:39px;}
+            .bg{background-image:url('./productList/banner-bg.png');
+                width:100%;height:100%;top:0;left:0;
+                position:absolute;}     
     }
     .btn-want{padding:12px 32px;border:1px solid #fff;background-color:transparent;}
     .panel{background-color:#fff;margin-top:20px;
         border-top:1px solid #e5e5e5;
         border-bottom:1px solid #e5e5e5;
+        .header{height:100px;line-height:100px;border-bottom:1px solid #e5e5e5;
+             padding-left:26px;padding-right:26px;
+            *{vertical-align:middle;}
+        }
+        .body{padding-top:47px;padding-bottom:60px;position:relative;}
+        .left{padding-left:60px;padding-right:40px;
+            border-right:1px solid #e5e5e5;
+        }
+        .right{padding-left:44px;}
     }
-    .header{height:100px;line-height:100px;border-bottom:1px solid #e5e5e5;
-        padding-left:26px;padding-right:26px;
-        *{vertical-align:middle;}
-    }
-    .body{padding-top:47px;padding-bottom:60px;position:relative;}
-    .left{padding-left:60px;padding-right:40px;
-        border-right:1px solid #e5e5e5;
-    }
-    .right{padding-left:44px;}
     .text-info{height:80px;line-height:80px;color:#cbcbcb;text-align:center;
         letter-spacing:5px;
     }
@@ -134,10 +134,7 @@
         background-size:25px 23px;}
     .icon-medium{background-image:url('./productList/dollar@2x.png');background-size:25px 23px;}
     .icon-long{background-image:url('./productList/diamond@2x.png');background-size:25px 23px;}
-    .icon-limit{background-image:url('./productList/limit@2x.png');
-        width:122px;height:36px;color:#fff;
-        padding-left:23px;
-    }
+    
     .icon-start-sell{background-image:url('./productList/begin-sell@2x.png');
         width:100px;height:105px;position:absolute;bottom:0;right:0;}
     .icon-sell-out{background-image:url('./productList/sell-out@2x.png');

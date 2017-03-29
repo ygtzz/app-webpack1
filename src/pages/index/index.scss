@@ -3,6 +3,15 @@
 /*icon*/
 .icon-arrow-right{background-image:url('./views/common/arrow-right@2x.png');
 width:15px;height:23px;}
+.icon-limit{background-image:url('./views/common/limit@2x.png');
+        width:122px;height:36px;color:#fff;padding-left:23px;
+        font-size:dpr(22px);
+}
 .line{background:#dfdfdf;height:1px;width:50px;display:inline-block;}
+.text-info{height:80px;width:100%;line-height:80px;color:#cbcbcb;text-align:center;
+        letter-spacing:5px;
+        font-size:dpr(24px);
+        *{vertical-align:middle;}
+}
 .c-yellow{color:#ffa200}
 .c-orange{color:#f46200}

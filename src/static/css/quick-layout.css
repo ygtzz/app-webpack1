@@ -279,6 +279,7 @@ a:hover { text-decoration: underline; }
 .f28 { font-size: dpr(28px); }
 .f30 { font-size: dpr(30px); }
 .f36 { font-size: dpr(36px);}
+.f40 { font-size: dpr(40px); }
 .f50 { font-size: dpr(50px); }
 .f60 { font-size: dpr(60px); }
 /* font-family */

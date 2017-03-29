@@ -1,31 +1,34 @@
 <template>
     <div class="me">
         <div class="header">
-            <div class="banner">
-                <div class="user fix f24">
-                    <span class="icon avatar dib vm">
-                        <img src="./me/avatar@2x.png" alt="avatar">
-                    </span>
-                    <span class="name vm">Hi，喵了个咪~</span>
-                    <span class="icon r icon-envelop envelop"></span>
-                </div>
-                <div class="property tc">
-                    <div class="p-title">
-                        <span class="f24 orange vm">总资产(元)</span>
-                        <span class="icon icon-eye vm eye"></span>
+            <div class="me-banner">
+                <div class="banner-top">
+                    <div class="user fix f24">
+                        <span class="icon avatar dib vm">
+                            <img src="./me/avatar@2x.png" alt="avatar">
+                        </span>
+                        <span class="name vm">Hi，喵了个咪~</span>
+                        <span class="icon r icon-envelop envelop"></span>
                     </div>
-                    <div class="p-count white">1,234.26</div>
-                </div>
-                <div class="money-wrap tc">
-                    <div class="balance-wrap dib pt40">
-                        <p class="orange f24">账户余额(元)</p>
-                        <p class="balance white f36">235.00</p>
+                    <div class="property tc">
+                        <div class="p-title">
+                            <span class="f24 orange vm">总资产(元)</span>
+                            <span class="icon icon-eye vm eye"></span>
+                        </div>
+                        <div class="p-count white">1,234.26</div>
                     </div>
-                    <div class="income-wrap dib pt40">
-                        <p class="orange f24">累计收益(元)</p>
-                        <p class="income white f36">3459.39</p>
+                    <div class="money-wrap tc">
+                        <div class="balance-wrap dib pt40">
+                            <p class="orange f24">账户余额(元)</p>
+                            <p class="balance white f36">235.00</p>
+                        </div>
+                        <div class="income-wrap dib pt40">
+                            <p class="orange f24">累计收益(元)</p>
+                            <p class="income white f36">3459.39</p>
+                        </div>
                     </div>
                 </div>
+                <div class="arc"></div>
             </div>
             <div class="operation tc">
                 <div class="charge dib">充值</div><div class="drawmoney dib">提现</div>
@@ -121,15 +124,22 @@
     </div>
 </template>
 <style lang="sass" scoped>
-    .me{background:#f2f2f2;}
-    .header,.info,.panel{background:#fff}
-    .header{height:560px;}
-    .banner{
-        height:460px;
-        background-image:url('./me/banner.png');
-        background-size:100% 100%;
-        background-color:#ff5a00;
-        padding-top:36px;
+    .me{background:#f2f2f2;
+        .header,.info,.panel{background:#fff}
+        .header{height:560px;}
+    }
+    .me-banner{
+        height:462px;
+        .banner-top{
+            background-image:url('./common/banner-1px.png');
+            background-size:100% 100%;
+            background-color:#ff5a00;
+            padding-top:36px;
+        }
+        .arc{
+            height:26px;
+            background-image:url('./me/banner-me-arc.png');
+        }
     }
     .dot-red{display:inline-block;width:18px;height:18px;background-color:#ff3636;border-radius:50%;}
     .exprience-dot{margin-left:6px;margin-top:-6px;}
@@ -185,7 +195,7 @@ import _ from 'lodash';
 import data from 'index/mock/data';
 
 export default {
-    name:'v-entry',
+    name:'v-me',
     created() {
         
     },

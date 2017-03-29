@@ -60,14 +60,16 @@ export default {
     }
     .body{
         height:100%;
-        overflow:auto;
+        width: 100%;
+        overflow:hidden;
+        overflow-y:auto;
         -webkit-overflow-scrolling:touch;
         padding-bottom:92px;
     }
     .bottom-fixed{
         border-top: 1px solid #E7E7E7;
-        height:92px;
-        line-height:92px;
+        height:104px;
+        line-height:1;
         position:absolute;
         bottom:0;
         width:100%;
