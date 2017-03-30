@@ -5,7 +5,7 @@ export const asynctypes = [
 ]
 
 export const synctypes = [
-    
+    'setUser'
 ]
 
 export const types = {};

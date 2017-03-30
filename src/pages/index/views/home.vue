@@ -170,6 +170,7 @@ Vue.component(SwipeItem.name, SwipeItem);
 export default {
     name:'v-home',
     created() {
+        console.log(this.userId)
         this.fRequestIndexData({userId:this.userId});
         this.$nextTick(() => {
             this.fastScroll = new BScroll(this.$refs.fastWrapper,{
