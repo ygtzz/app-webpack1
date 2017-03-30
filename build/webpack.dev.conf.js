@@ -32,8 +32,24 @@ aEntry.forEach(function(item){
 });
 
 module.exports = merge(baseWebapckConfig,{
+    module: {
+        loaders: [
+            {test: /\.css$/, loader: 'style!css?importLoaders=1!postcss'},
+            {test: /\.scss$/, loader:'style!css?importLoaders=2!postcss!sass'},
+            {
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                loader: 'url?limit=10000&name=/static/images/[name].[ext]'
+            }
+        ]
+    },
+    vue: {
+        loaders: {
+            css: "style!css?importLoaders=1!postcss",
+            sass: "style!css?importLoaders=2!postcss!sass"
+        }
+    },
     plugins: aPlugin,
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'cheap-source-map',
     devServer: {
         contentBase:        config.sDist,
         port:               config.dev.port,

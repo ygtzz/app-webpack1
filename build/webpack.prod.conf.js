@@ -3,8 +3,9 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var AssetsPlugin = require('assets-webpack-plugin');
 var ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
+var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 var merge = require('webpack-merge');
-var WebpackMd5Hash = require('webpack-md5-hash');
+var WebpackChunkHash = require('webpack-chunk-hash');
 var baseWebapckConfig = require('./webpack.base.conf');
 var config = require('./config');
 
@@ -28,6 +29,7 @@ var aPlugin = [
             warnings: false
         }
     }),
+    new LodashModuleReplacementPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new AssetsPlugin({
       filename: config.sDest + '/map.json',
@@ -38,7 +40,10 @@ var aPlugin = [
       filename: "chunk-manifest.json",
       manifestVariable: "webpackManifest"
     }),
-    new WebpackMd5Hash()
+    new webpack.optimize.OccurenceOrderPlugin(true),    
+    new WebpackChunkHash({algorithm: 'md5'}),
+    // DedupePlugin disabled. It breaks module IDs across builds (even when using recordsPath option)
+    //new webpack.optimize.DedupePlugin() 
 ];
 
 //html webpack
@@ -63,13 +68,47 @@ module.exports = merge(baseWebapckConfig, {
         vendor: ['vue', 'vuex', 'vue-router', 'vuex-router-sync','vue-resource']
     },
     output: {
-        path: './dist',
-        filename: '/static/scripts/[name].[chunkhash:8].js',
-        chunkFilename: "/static/scripts/[name].[chunkhash:8].js"
+        path: config.sDest,
+        filename: config.prod.path.script + '[name].[chunkhash:8].js',
+        chunkFilename: config.prod.path.script + "[name].[chunkhash:8].js"
     },
-    loaders:{
-        {test: /\.css$/, loader: ExtractTextPlugin.extract('style','css!postcss')},
-        {test: /\.scss$/, loader: ExtractTextPlugin.extract('css!postcss!sass')}
+    module: {
+        loaders: [
+            {test: /\.css$/, loader: ExtractTextPlugin.extract('style','css!postcss')},
+            {test: /\.scss$/, loader: ExtractTextPlugin.extract('css!postcss!sass')},
+            {
+                test: /\.(svg)(\?.*)?$/,
+                loaders: [
+                    'url?limit=2048&name=/static/images/[name].[ext]'
+                ]
+            },
+            {
+                test: /\.(png|jpe?g|gif)(\?.*)?$/,
+                loaders: [
+                    'url?limit=2048&name=/static/images/[name].[ext]',
+                    'image-webpack'
+                ]
+            }
+        ]
+    },
+    imageWebpackLoader: {
+        mozjpeg: {
+            quality: 65
+        },
+        pngquant:{
+            quality: "65-90",
+            speed: 4
+        },
+        svgo:{
+            plugins: [
+                {
+                removeViewBox: false
+                },
+                {
+                removeEmptyAttrs: false
+                }
+            ]
+        }
     },
     vue: {
         loaders: {

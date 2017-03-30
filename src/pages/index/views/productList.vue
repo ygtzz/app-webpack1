@@ -142,10 +142,6 @@
 </style>
 <script>
 import {mapGetters,mapActions} from "vuex";
-import header from './shopping/header.vue';
-import {urlParse,fmtDate} from 'widget/util/util';
-import _ from 'lodash';
-import data from 'index/mock/data';
 
 export default {
     name:'v-productList',
@@ -154,9 +150,7 @@ export default {
     },
     data() {
       return {
-        seller: data.seller,
-        aMenu:['商品','评论','商家'],
-        sActiveId:''
+        
       }
     },
     computed:{
@@ -170,10 +164,10 @@ export default {
         }
     },
     components:{
-        'c-header':header
+        
     },
     filters:{
-        fmtDate:fmtDate
+        
     }
 }
 </script>

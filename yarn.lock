@@ -2717,6 +2717,12 @@ loader-utils@0.2.x, loader-utils@^0.2.10, loader-utils@^0.2.11, loader-utils@^0.
     json5 "^0.5.0"
     object-assign "^4.0.1"
 
+lodash-webpack-plugin@^0.11.2:
+  version "0.11.2"
+  resolved "http://registry.npm.taobao.org/lodash-webpack-plugin/download/lodash-webpack-plugin-0.11.2.tgz#fdb945b1ae94617172da172f20b60264cfbac635"
+  dependencies:
+    lodash "^4.17.4"
+
 lodash._arraycopy@^3.0.0:
   version "3.0.0"
   resolved "http://registry.npm.taobao.org/lodash._arraycopy/download/lodash._arraycopy-3.0.0.tgz#76e7b7c1f1fb92547374878a562ed06a3e50f6e1"
@@ -5126,6 +5132,10 @@ watchpack@^0.2.1:
     async "^0.9.0"
     chokidar "^1.0.0"
     graceful-fs "^4.1.2"
+
+webpack-chunk-hash@^0.4.0:
+  version "0.4.0"
+  resolved "http://registry.npm.taobao.org/webpack-chunk-hash/download/webpack-chunk-hash-0.4.0.tgz#6b40c3070fbc9ff0cfe0fe781c7174af6c7c16a4"
 
 webpack-config@^6.2.1:
   version "6.2.1"

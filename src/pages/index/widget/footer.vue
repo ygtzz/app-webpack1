@@ -38,7 +38,6 @@ export default {
     },
     methods:{
         fNavClick(item){
-            console.log(item)
             this.sNavActiveName = item.name;
         }
     }

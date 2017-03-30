@@ -153,7 +153,7 @@
     }
     .fast{.body{padding:26px;}}
     .fast-wrap{width:100%;}
-    .fast-list{width:900px;}
+    .fast-list{width:1050px;}
     .fast-item{border:1px solid #e5e5e5;display:inline-block;padding:30px;
         text-align:center;
         &:not(:last-child){margin-right:30px;}
