@@ -1,7 +1,19 @@
+var target = 'http://wb.symdata.cn/wb/app/h5';
+
 module.exports = {
-    '/v4': {
-        target: 'http://m.maizuo.com',
+    '/index/requestIndexData': {
+        target: target,
         changeOrigin: true,
-        pathRewrite: { '^/v4': '/v4'}
-    }
+        pathRewrite: { '^/index/requestIndexData': '/index/requestIndexData'}
+    },
+    '/mine/getUserInfo':{
+        target: target,
+        changeOrigin: true,
+        pathRewrite: { '^/mine/getUserInfo': '/mine/getUserInfo'}
+    },
+    '/investLoan/getFinanceListData':{
+        target: target,
+        changeOrigin: true,
+        pathRewrite: { '^/investLoan/getFinanceListData': '/investLoan/getFinanceListData'}
+    },
 }

@@ -1,15 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VueResource from 'vue-resource';
-
-//基本通用
-import base from './modules/base'
-//聊天
-import chat from './modules/chat'
-//联系人
-import contacts from './modules/contacts'
-//发现
-import find from './modules/find'
+import home from './modules/home'
+import me from './modules/me'
+import productList from './modules/productList'
 import * as getters from './getters'
 import * as actions from './actions';
 
@@ -20,10 +14,8 @@ export default new Vuex.Store({
     actions,
     getters,
     modules: {
-        base,
-        chat,
-        contacts,
-        find
-    },
-    strict: true
+        home,
+        me,
+        productList
+    }
 })

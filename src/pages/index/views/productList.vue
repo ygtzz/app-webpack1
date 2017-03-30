@@ -8,13 +8,13 @@
             </div>
             <div class="bg"></div>
         </div>
-        <div class="panel short">
+        <div v-for="item in model.financeLoanList" class="panel">
             <div class="header">
                 <span class="icon-wrap">
                     <span class="icon icon-short"></span>   
-                    <span class="f24 text">短期</span>
+                    <span class="f24 text" v-text="item.title.slice(0,2)"></span>
                 </span>
-                <span class="f28 g6">快进快出，短小精赚</span>
+                <span class="f28 g6" v-text="item.termDescription"></span>
                 <span class="r">
                     <span class="f24 g9">查看全部产品</span>
                     <span class="icon icon-arrow-right"></span>
@@ -22,68 +22,17 @@
             </div>
             <div class="body">
                 <div class="dib left">
-                    <p class="f60 c-orange">3.2%</p>
+                    <p class="f60 c-orange">{{item.borrowerInterest}}%</p>
                     <p class="f24 g9">预期年化收益率</p>
                 </div>
                 <div class="dib right">
                     <p>
-                        <span class="f50">65天</span>
+                        <span class="f50">{{item.dayCounts}}天</span>
                         <span class="icon icon-limit">限量爆款</span>
                     </p>
-                    <p class="f24 g9">天金所发行 · 长安保险承保</p>
+                    <p class="f24 g9">{{item.guarantymemo}} · {{item.guarantyway}}</p>
                 </div>
-            </div>
-        </div>
-        <div class="panel medium">
-            <div class="header">
-                <span class="icon-wrap">
-                    <span class="icon icon-short"></span>   
-                    <span class="f24 text">中期</span>
-                </span>
-                <span class="f28 g6">收益稳定，省心省力</span>
-                <span class="r">
-                    <span class="f24 g9">查看全部产品</span>
-                    <span class="icon icon-arrow-right"></span>
-                </span>
-            </div>
-            <div class="body">
-                <div class="dib left">
-                    <p class="f60 c-orange">4.7%</p>
-                    <p class="f24 g9">预期年化收益率</p>
-                </div>
-                <div class="dib right">
-                    <p>
-                        <span class="f50">128天</span>
-                    </p>
-                    <p class="f24 g9">天金所发行 · 长安保险承保</p>
-                </div>
-                <div class="icon icon-start-sell"></div>                
-            </div>
-        </div>
-        <div class="panel long">
-            <div class="header">
-                <span class="icon-wrap">
-                    <span class="icon icon-short"></span>   
-                    <span class="f24 text">长期</span>
-                </span>
-                <span class="f28 g6">一年整一次，一次整一年</span>
-                <span class="r">
-                    <span class="f24 g9">查看全部产品</span>
-                    <span class="icon icon-arrow-right"></span>
-                </span>
-            </div>
-            <div class="body">
-                <div class="dib left">
-                    <p class="f60 c-orange">5.3%</p>
-                    <p class="f24 g9">预期年化收益率</p>
-                </div>
-                <div class="dib right">
-                    <p>
-                        <span class="f50">360天</span>
-                    </p>
-                    <p class="f24 g9">天金所发行 · 长安保险承保</p>
-                </div>
-                <div class="icon icon-sell-out"></div>                
+                <div class="icon icon-start-sell"></div> 
             </div>
         </div>
         <div class="text-info">
@@ -127,7 +76,7 @@
         height:39px;line-height:1;color:#ffa200;
         display:inline-block;
         *{vertical-align:middle;}
-        .icon{background-color:#ffa200;padding:6px;}
+        .icon{background-color:#ffa200;}
         .text{padding-left:1px;padding-right:7px;}
     }
     .icon-short{background-image:url('./productList/rmb@2x.png');height:100%;width:35px;
@@ -141,12 +90,12 @@
         width:100px;height:105px;position:absolute;bottom:0;right:0;}
 </style>
 <script>
-import {mapGetters,mapActions} from "vuex";
+import {mapState,mapGetters,mapActions} from "vuex";
 
 export default {
     name:'v-productList',
     created() {
-        
+        this.fGetFinanceListData({userId:this.userId});
     },
     data() {
       return {
@@ -154,9 +103,15 @@ export default {
       }
     },
     computed:{
-       
+       ...mapState({
+           model:'productList'
+       }),
+       ...mapGetters({
+           userId:'userId'
+       })
     },
     methods:{
+        ...mapActions(['fGetFinanceListData']),
         fMenuItemClick(index){
             this.sActiveId = index;
             const map = {0:'goods',1:'comment',2:'merchant'};

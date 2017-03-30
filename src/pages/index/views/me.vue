@@ -5,9 +5,9 @@
                 <div class="banner-top">
                     <div class="user fix f24">
                         <span class="icon avatar dib vm">
-                            <img src="./me/avatar@2x.png" alt="avatar">
+                            <img :src="data.user.portraitPath" alt="avatar">
                         </span>
-                        <span class="name vm">Hi，喵了个咪~</span>
+                        <span class="name vm" v-text="data.user.userName"></span>
                         <span class="icon r icon-envelop envelop"></span>
                     </div>
                     <div class="property tc">
@@ -15,16 +15,16 @@
                             <span class="f24 orange vm">总资产(元)</span>
                             <span class="icon icon-eye vm eye"></span>
                         </div>
-                        <div class="p-count white">1,234.26</div>
+                        <div class="p-count white" v-text="data.user.totalAmount"></div>
                     </div>
                     <div class="money-wrap tc">
                         <div class="balance-wrap dib pt40">
                             <p class="orange f24">账户余额(元)</p>
-                            <p class="balance white f36">235.00</p>
+                            <p class="balance white f36" v-text="data.user.cash"></p>
                         </div>
                         <div class="income-wrap dib pt40">
                             <p class="orange f24">累计收益(元)</p>
-                            <p class="income white f36">3459.39</p>
+                            <p class="income white f36" v-text="data.user.userTotalInterest"></p>
                         </div>
                     </div>
                 </div>
@@ -188,12 +188,13 @@
     .icon-online-service{background-image:url('./me/online-service@2x.png');width:34px;height:34px;}
 </style>
 <script>
-import {mapGetters,mapActions} from "vuex";
+import {mapState,mapGetters,mapActions} from "vuex";
 
 export default {
     name:'v-me',
     created() {
-        
+        const userId = this.userId;
+        this.fGetUserInfo({userId:userId});
     },
     data() {
       return {
@@ -201,14 +202,18 @@ export default {
       }
     },
     computed:{
-       
+       ...mapState({
+           model:'me'
+       }),
+       ...mapGetters({
+           userId:'userId'
+       }),
+       data(){
+           return this.model.data;
+       }
     },
     methods:{
-        fMenuItemClick(index){
-            this.sActiveId = index;
-            const map = {0:'goods',1:'comment',2:'merchant'};
-            this.$router.push({name:map[index]});
-        }
+        ...mapActions(['fGetUserInfo'])
     },
     components:{
         

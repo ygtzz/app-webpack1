@@ -44,9 +44,7 @@ export default {
         }
     },
     computed:{
-        ...mapGetters([
-            'backPath'
-        ])
+       
     },
     methods:{
         fLeftClick(){
