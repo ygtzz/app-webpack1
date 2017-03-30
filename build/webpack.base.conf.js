@@ -27,14 +27,6 @@ module.exports = {
             {test: /\.(js|jsx)$/, loader: "babel", exclude: /node_modules/},
             {test: /\.(html)$/, loader: 'html'},
             {test: /\.vue$/, loader: 'vue'},
-            // {
-            //     test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-            //     loader: 'url',
-            //     query: {
-            //         limit: 1,
-            //         name: '/static/images/[name].[ext]'
-            //     }
-            // },
             {
                 test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
                 loader: 'url',
