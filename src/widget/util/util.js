@@ -75,3 +75,65 @@ export function urlParse() {
   }
   return obj;
 };
+
+export function fClearObject(obj){
+    for(var p in obj){
+        var item = obj[p];
+        if(item === null || typeof(item) === undefined || (Object.prototype.toString.call(item) === '[object Number]' && isNaN(item))){
+            delete obj[p];
+        }
+    }
+    return obj;
+}
+
+export function fFormatError(err){
+    if(err.data){
+        if(err.data.msg){
+            err = err.data.msg;
+        }
+        else if(typeof(err.data) == 'string'){
+            err = err.data;
+        }
+        else{
+            err = JSON.stringify(err.data);
+        }
+    }
+    else if(err.message){
+        err = 'message:' + err.message + '\r\nstack:' + err.stack;
+    }
+    else if(typeof(err) === 'string'){
+        err = err || '';
+    }
+    else{
+        err = JSON.stringify(err)
+    }
+    return err;
+}
+
+export function fNotify(vue,msg){
+    if(!msg){
+        throw new Error('need vue instance param');
+        return;
+    }
+    vue.$toast(msg,{
+        duration:2000,
+        className:['custom-toast'],
+        transition:'fade'
+    });
+}
+
+export function fNotifyError(vue,err){
+    if(!err){
+        throw new Error('need vue instance param');
+        return;
+    }
+    fNotify(vue,fFormatError(err));
+}
+
+export function fToQueryString(obj,aExclude){
+    aExclude = aExclude || [];
+    const qs = Object.keys(obj).reduce((pre,cur,index) => {
+        return pre + (aExclude.indexOf(cur) > -1 ? '' : (cur + '=' + obj[cur] + '&'));
+    },'')
+    return qs.slice(0,-1);
+}

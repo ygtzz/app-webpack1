@@ -5,9 +5,9 @@
                 <div class="banner-top">
                     <div class="user fix f24">
                         <span class="icon avatar dib vm">
-                            <img :src="data.user.portraitPath" alt="avatar">
+                            <img :src="model.user.portraitPath" alt="avatar">
                         </span>
-                        <span class="name vm" v-text="data.user.userName"></span>
+                        <span class="name vm" v-text="model.user.userName"></span>
                         <span class="icon r icon-envelop envelop"></span>
                     </div>
                     <div class="property tc">
@@ -15,16 +15,16 @@
                             <span class="f24 orange vm">总资产(元)</span>
                             <span class="icon icon-eye vm eye"></span>
                         </div>
-                        <div class="p-count white" v-text="data.user.totalAmount"></div>
+                        <div class="p-count white" v-text="model.user.totalAmount"></div>
                     </div>
                     <div class="money-wrap tc">
                         <div class="balance-wrap dib pt40">
                             <p class="orange f24">账户余额(元)</p>
-                            <p class="balance white f36" v-text="data.user.cash"></p>
+                            <p class="balance white f36" v-text="model.user.cash"></p>
                         </div>
                         <div class="income-wrap dib pt40">
                             <p class="orange f24">累计收益(元)</p>
-                            <p class="income white f36" v-text="data.user.userTotalInterest"></p>
+                            <p class="income white f36" v-text="model.user.userTotalInterest"></p>
                         </div>
                     </div>
                 </div>
@@ -139,6 +139,7 @@
         .arc{
             height:26px;
             background-image:url('./me/banner-me-arc.png');
+            background-size: 100% 100%;
         }
     }
     .dot-red{display:inline-block;width:18px;height:18px;background-color:#ff3636;border-radius:50%;}
@@ -189,6 +190,7 @@
 </style>
 <script>
 import {mapState,mapGetters,mapActions} from "vuex";
+import {fNotifyError} from 'widget/util/util';
 
 export default {
     name:'v-me',
@@ -200,6 +202,11 @@ export default {
       return {
         
       }
+    },
+    watch:{
+        'model.err'(val){
+            this.fNotifyError(this,val);
+        }
     },
     computed:{
        ...mapState({

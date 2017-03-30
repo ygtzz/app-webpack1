@@ -2,6 +2,7 @@ import {types} from '../mutation-types'
 
 const state = {
     loading:false,
+    err:'',
     "newData": {
             "title": "新手推荐",
             "data": [ ]
@@ -9,7 +10,7 @@ const state = {
     "bannerList": [
         {
             "title": "冷风banner",
-            "protoMongoFileId": "http://wb.symdata.cn/pics/795915423d684abea6257744798d5e4e.png",
+            "protoMongoFileId": "",
             "url": "www.yinker.com"
         }
     ],
@@ -133,14 +134,16 @@ const mutations = {
         state.loading = true;
     },
     [types['requestIndexData.ok']](state, payload) {
-        console.log(payload)
         _.assign(state,{
             loading: false,
             ...payload
         })
     },
     [types['requestIndexData.error']](state, payload) {
-        
+        _.assign(state,{
+            loading:fasle,
+            err:payload
+        })
     }
 }
 

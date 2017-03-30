@@ -35,6 +35,7 @@
                 <div class="icon icon-start-sell"></div> 
             </div>
         </div>
+
         <div class="text-info">
             <span class="line vm"></span>
             <span class="text">优质资产，保险保障</span>
@@ -76,8 +77,8 @@
         height:39px;line-height:1;color:#ffa200;
         display:inline-block;
         *{vertical-align:middle;}
-        .icon{background-color:#ffa200;}
-        .text{padding-left:1px;padding-right:7px;}
+        .icon{background-color:#ffa200;float:left;}
+        .text{padding-left:9px;padding-right:7px;line-height:36px;}
     }
     .icon-short{background-image:url('./productList/rmb@2x.png');height:100%;width:35px;
         background-size:25px 23px;}
@@ -91,6 +92,7 @@
 </style>
 <script>
 import {mapState,mapGetters,mapActions} from "vuex";
+import {fNotifyError} from 'widget/util/util';
 
 export default {
     name:'v-productList',
@@ -101,6 +103,11 @@ export default {
       return {
         
       }
+    },
+    watch:{
+        'model.err'(val){
+            this.fNotifyError(this,val);
+        }
     },
     computed:{
        ...mapState({

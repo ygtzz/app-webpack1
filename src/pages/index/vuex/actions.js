@@ -5,7 +5,7 @@ import url from './url';
 export function fGetUserInfo({commit},payload) {
     commit(types['getUserInfo.start']);
     return Vue.http.get(url['getUserInfo'],{params:payload}).then(function(res) {
-        commit(types['getUserInfo.ok'], res.data);
+        commit(types['getUserInfo.ok'], res.data.data);
     }).catch(function(err){
         commit(types['getUserInfo.error'],err);
         return Promise.reject(err);

@@ -22,7 +22,7 @@
             <div class="slide-wrap">
                 <mt-swipe class="slide-list" :auto="4000">
                     <mt-swipe-item class="slide" v-for="item in model.bannerList">
-                        <img :src="item.protoMongoFileId" alt="banner img">
+                        <img :src="item.protoMongoFileId">
                     </mt-swipe-item>
                 </mt-swipe>
             </div>
@@ -63,9 +63,9 @@
                 </div>
             </div>
         </div>
-        <div class="panel choice">
+        <div v-for="item in model.oldData.data" class="panel choice">
             <div class="header">
-                <span class="f28 g3">精选理财</span>
+                <span class="f28 g3" v-text="item.title"></span>
                 <span class="r">
                     <span class="f24 g9">查看全部产品</span>
                     <span class="icon icon-arrow-right"></span>
@@ -73,14 +73,14 @@
             </div>
             <div class="body">
                 <div class="dib left">
-                    <p class="f60 c-orange">3.7%</p>
+                    <p class="f60 c-orange">{{item.borrowerInterest}}%</p>
                     <p class="f24 g9">预期年化收益率</p>
                 </div>
                 <div class="dib right">
                     <p>
-                        <span class="f50">90天</span>
+                        <span class="f50">{{item.dayCounts}}天</span>
                     </p>
-                    <p class="f24 g9">天金所发行 · 长安保险承保</p>
+                    <p class="f24 g9">{{item.guarantymemo}} · {{item.guarantyway}}</p>
                 </div>
             </div>
         </div>
@@ -106,6 +106,7 @@
         .arc{
             height:24px;
             background-image:url('./home/banner-home-arc.png');
+            background-size: 100% 100%;
         }
     }
     .user{padding-left:25px;padding-right:20px;line-height:80px;}
@@ -161,6 +162,7 @@ import Vue from 'vue';
 import {mapGetters,mapActions,mapState} from "vuex";
 import BScroll from 'better-scroll';
 import { Swipe, SwipeItem } from 'mint-ui';
+import {fNotifyError} from 'widget/util/util';
 
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
@@ -180,6 +182,16 @@ export default {
       return {
         fastScroll:''
       }
+    },
+    watch:{
+        'model.fastData'(){
+            this.$nextTick(() => {
+                this.fastScroll.refresh();
+            });
+        },
+        'model.err'(val){
+            this.fNotifyError(this,val);
+        }
     },
     computed:{
        ...mapState({
