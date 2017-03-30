@@ -5,9 +5,9 @@
                 <div class="banner-top">
                     <div class="user fix f24">
                         <span class="icon avatar dib vm">
-                            <img src="./me/avatar@2x.png" alt="avatar">
+                            <img :src="model.user.photo" alt="avatar">
                         </span>
-                        <span class="name vm">Hi，喵了个咪~</span>
+                        <span class="name vm" v-text="model.user.nickName"></span>
                         <span class="icon r icon-tree tree"></span>
                     </div>
                     <div class="title-wrap tc">
@@ -20,31 +20,23 @@
                 <div class="arc"></div>
             </div>
             <div class="slide-wrap">
-                <mt-swipe class="slide-list" :auto="40000">
-                    <mt-swipe-item class="slide">1</mt-swipe-item>
-                    <mt-swipe-item class="slide">2</mt-swipe-item>
-                    <mt-swipe-item class="slide">3</mt-swipe-item>
+                <mt-swipe class="slide-list" :auto="4000">
+                    <mt-swipe-item class="slide" v-for="item in model.bannerList">
+                        <img :src="item.protoMongoFileId" alt="banner img">
+                    </mt-swipe-item>
                 </mt-swipe>
             </div>
         </div>
         <div class="panel fast">
             <div class="header">
-                <span class="f28 g3">快速投资</span>
+                <span class="f28 g3" v-text="model.fastData.title"></span>
             </div>
             <div class="body">
                 <div ref="fastWrapper" class="fast-wrap">
                     <ul class="fast-list">
-                        <li class="fast-item">
-                            <p class="fast-title">短期(1-3月)</p>
-                            <p class="c-orange f40">2.6%~3.1%</p>
-                        </li>
-                        <li class="fast-item">
-                            <p class="fast-title">中期(4-6个月)</p>
-                            <p class="c-orange f40">3.6%~4.1%</p>
-                        </li>
-                        <li class="fast-item">
-                            <p class="fast-title">长期(7-12个月)</p>
-                            <p class="c-orange f40">4.6%~5.3%</p>
+                        <li class="fast-item" v-for="item in model.fastData.data">
+                            <p class="fast-title">{{item.name}}({{item.days}})</p>
+                            <p class="c-orange f40">?2.6%~3.1%</p>
                         </li>
                     </ul>
                 </div>
@@ -137,7 +129,8 @@
     :global(.slide-list .mint-swipe-indicator.is-active){
         background: #ff8200;
     }
-    .slide{line-height:180px;text-align:center;font-size:40px;}
+    .slide{height:100%;
+           img{width:100%;height:100%;}}
     .panel{background-color:#fff;margin-top:20px;
         border-top:1px solid #e5e5e5;
         border-bottom:1px solid #e5e5e5;
@@ -165,7 +158,7 @@
 </style>
 <script>
 import Vue from 'vue';
-import {mapGetters,mapActions} from "vuex";
+import {mapGetters,mapActions,mapState} from "vuex";
 import BScroll from 'better-scroll';
 import { Swipe, SwipeItem } from 'mint-ui';
 
@@ -175,6 +168,7 @@ Vue.component(SwipeItem.name, SwipeItem);
 export default {
     name:'v-home',
     created() {
+        this.fRequestIndexData({userId:this.userId});
         this.$nextTick(() => {
             this.fastScroll = new BScroll(this.$refs.fastWrapper,{
                 click: true,
@@ -188,9 +182,17 @@ export default {
       }
     },
     computed:{
-       
+       ...mapState({
+           model:'home'
+       }),
+       ...mapGetters({
+           userId:'userId'
+       })
     },
     methods:{
+        ...mapActions({
+            fRequestIndexData:'fRequestIndexData'
+        }),
         fMenuItemClick(index){
            
         }
