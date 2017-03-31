@@ -4,7 +4,7 @@ html,body{
     overflow:hidden;
     font-family:'PingFang SC', 'STHeitiSC-Light', 'Helvetica-Light', arial, sans-serif;
     font-size:dpr(28px);
-    line-height:1.6;
+    line-height:1.5;
 }
 /*reset*/
 html * {
@@ -33,6 +33,7 @@ ul,li,p{margin:0;padding:0}
 .stage{position:absolute;top:0;left:0;right:0;bottom:0;z-index:10;background-color:#F1F0F6;}
 .icon{display:inline-block;background-size:contain;background-position:center;background-repeat:no-repeat;}
 .gray{color:#B1B5B9}
+.s9{transform:scale(.9)}
 /*slideup*/
 .slide-up-enter-active{transition:all .1s ease}
 .slide-up-leave-active{transition:all .1s ease}
