@@ -4462,9 +4462,9 @@ postcss-filter-plugins@^2.0.0:
     postcss "^5.0.4"
     uniqid "^4.0.0"
 
-postcss-flexible@^0.3.0:
-  version "0.3.0"
-  resolved "http://registry.npm.taobao.org/postcss-flexible/download/postcss-flexible-0.3.0.tgz#8f78f3a950905d497d298db6974c18d07bbd942e"
+postcss-flexible@^0.4.1:
+  version "0.4.1"
+  resolved "http://registry.npm.taobao.org/postcss-flexible/download/postcss-flexible-0.4.1.tgz#442a7ca60c150c4ea6946f676352265e8f46890c"
   dependencies:
     postcss "^5.2.0"
 

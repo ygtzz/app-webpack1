@@ -1,15 +1,19 @@
 <template>
     <div class="home">
         <div class="header">
+            <div ref="notice" class="notice-wrap" :class="{'dn':!bShowNotice}">
+                <span v-text="model.notice.title" class="notice"></span>
+                <span @click="fCloseNotice" class="close r">×</span>
+            </div>
             <div class="home-banner">
+                <div ref="user" class="user fix f24">
+                    <span class="icon avatar dib vm">
+                        <img :src="model.user.photo" alt="avatar">
+                    </span>
+                    <span class="name vm" v-text="model.user.nickName"></span>
+                    <span class="icon r icon-tree tree"></span>
+                </div>
                 <div class="banner-top">
-                    <div class="user fix f24">
-                        <span class="icon avatar dib vm">
-                            <img :src="model.user.photo" alt="avatar">
-                        </span>
-                        <span class="name vm" v-text="model.user.nickName"></span>
-                        <span class="icon r icon-tree tree"></span>
-                    </div>
                     <div class="title-wrap tc">
                         <p class="f40 white">提取绑卡，理财快人一步</p>
                     </div>
@@ -97,11 +101,11 @@
     }
     .home-banner{
         .banner-top{
-            height:374px;
+            height:304px;
             background-image:url('./common/banner-1px.png');
             background-size:100% 100%;
             background-color:#ff5a00;
-            padding-top:36px;
+            padding-top:42px;
         }
         .arc{
             height:24px;
@@ -109,15 +113,23 @@
             background-size: 100% 100%;
         }
     }
-    .user{padding-left:25px;padding-right:20px;line-height:80px;}
+    .notice-wrap{height:50px;line-height:50px;font-size:dpr(24px);background-color:#fffecb;color:#ff8201;
+        padding-left:24px;padding-right:24px;
+    }
+    .close{width:36px;height:36px;line-height:32px;text-align:center;border:2px solid #bbb;border-radius:50%;
+        color:#bbb;margin-top:8px;}
+    .user{height:106px;padding-left:25px;padding-right:20px;line-height:106px;width:100%;
+        top:0;background-image:url('./common/banner-1px.png');}
+    .user-fix{position:fixed;transform:scale(1);z-index:9999;top:0;left:0;}
+    .icon-tree{background-image:url('./home/tree@2x.png');width:70px;height:80px;
+        margin-top:12px;
+    }    
     .avatar{
         height:60px;width:60px;margin-right:24px;
         img{border-radius:50%;}
         img{width:100%;height:100%;}  
     }    
-    .title-wrap{
-        margin-top:42px;
-    }
+    .title-wrap{}
     .bind-wrap{margin-top:45px;}
     .btn-bind{background-color:#fff072;color:#ff5000;border:0;border-radius:4px;
         width:314px;height:82px;
@@ -154,7 +166,6 @@
     }
     .fast-title{color:#7a7a7a;font-size:dpr(28px)}    
     .text-info{height:95px;line-height:95px;}
-    .icon-tree{background-image:url('./home/tree@2x.png');width:70px;height:80px;}
     .icon-managemoney{background-image:url('./home/managemoney@2x.png');width:54px;height:27px;}
 </style>
 <script>
@@ -163,6 +174,7 @@ import {mapGetters,mapActions,mapState} from "vuex";
 import BScroll from 'better-scroll';
 import { Swipe, SwipeItem } from 'mint-ui';
 import {fNotifyError} from 'widget/util/util';
+import _ from 'lodash';
 
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
@@ -170,18 +182,28 @@ Vue.component(SwipeItem.name, SwipeItem);
 export default {
     name:'v-home',
     created() {
-        console.log(this.userId)
+        const self = this;
+        this.fixUserHeader = _.throttle(this.fixUser,50);
         this.fRequestIndexData({userId:this.userId});
         this.$nextTick(() => {
             this.fastScroll = new BScroll(this.$refs.fastWrapper,{
                 click: true,
                 scrollX: true
-            })
+            });
+            document.querySelector('section.body').onscroll = function(){
+                self.fixUserHeader();
+            }
         });
     },
+    mounted(){
+        this.nNoticeHeight = this.$refs.notice.offsetHeight;
+    },
     data() {
+      const self = this;
       return {
-        fastScroll:''
+        fastScroll:'',
+        bShowNotice:true,
+        nNoticeHeight:50
       }
     },
     watch:{
@@ -206,8 +228,20 @@ export default {
         ...mapActions({
             fRequestIndexData:'fRequestIndexData'
         }),
-        fMenuItemClick(index){
-           
+        fCloseNotice(){
+            this.bShowNotice = false;
+        },
+        fixUser(){
+            const scrollTop = document.querySelector('section.body').scrollTop;
+            const user = this.$refs.user;
+            if(scrollTop >= this.nNoticeHeight){
+                if(!user.classList.contains('user-fix')){
+                    user.classList.add('user-fix');
+                }
+            }
+            else{
+                user.classList.remove('user-fix');
+            }
         }
     },
     components:{

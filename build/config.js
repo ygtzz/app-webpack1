@@ -48,6 +48,6 @@ module.exports = {
         remVersion:true,
         baseDpr:2,
         remPrecision:6,
-        aDpr:[2,3]
+        dprList:[2,3]
     }
 }
