@@ -23,21 +23,21 @@
                     <div class="right dib">
                         <p>
                             <span class="f28">理财期限</span>
-                            <span class="pl10 pr10">·</span>
+                            <span class="">·</span>
                             <span class="f36 c-orange">120天</span>
                         </p>
                         <p>
                             <span class="f28">理财期限</span>
-                            <span class="pl10 pr10">·</span>
+                            <span class="">·</span>
                             <span class="f36 c-orange">100.00元</span>
                         </p>
                     </div>
                 </div>
-                <div class="progress-wrap mt40">
+                <div class="progress-wrap mt30">
                     <span class="progress vm"></span>
                     <span class="f24 s9 c-orange vm ml5">67%</span>
                 </div>
-                <div class="date f24 mt40">
+                <div class="date f24 mt30">
                     <ul class="datalist">
                         <li class="date-item">
                             <p>起息时间</p>
@@ -123,8 +123,8 @@
     .circle{display:inline-block;width:13px;height:13px;border:2px solid #d1d1d1;border-radius:50%;}
     .finance-header{
         line-height:1.2;
-        .left{padding-right:34px;}
-        .right{padding-left:37px;border-left:1px solid #e5e5e5;line-height:1.5}
+        .left{padding-right:10px;}
+        .right{padding-left:15px;border-left:1px solid #e5e5e5;line-height:1.4}
     }
     .banner-top{background-color:orange;}
     .progress{display:inline-block;width:500px;height:7px;
