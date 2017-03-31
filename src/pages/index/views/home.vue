@@ -113,7 +113,7 @@
             background-size: 100% 100%;
         }
     }
-    .notice-wrap{height:50px;line-height:50px;font-size:dpr(24px);background-color:#fffecb;color:#ff8201;
+    .notice-wrap{height:50px;line-height:50px;font-size:24px;background-color:#fffecb;color:#ff8201;
         padding-left:24px;padding-right:24px;
     }
     .close{width:36px;height:36px;line-height:32px;text-align:center;border:2px solid #bbb;border-radius:50%;
@@ -133,7 +133,7 @@
     .bind-wrap{margin-top:45px;}
     .btn-bind{background-color:#fff072;color:#ff5000;border:0;border-radius:4px;
         width:314px;height:82px;
-        font-size:dpr(36px);
+        font-size:36px;
     }
     .slide-wrap{height:180px;}
     :global(.slide-list .mint-swipe-indicators){
@@ -164,7 +164,7 @@
         text-align:center;
         &:not(:last-child){margin-right:30px;}
     }
-    .fast-title{color:#7a7a7a;font-size:dpr(28px)}    
+    .fast-title{color:#7a7a7a;font-size:28px}    
     .text-info{height:95px;line-height:95px;}
     .icon-managemoney{background-image:url('./home/managemoney@2x.png');width:54px;height:27px;}
 </style>
@@ -197,6 +197,9 @@ export default {
     },
     mounted(){
         this.nNoticeHeight = this.$refs.notice.offsetHeight;
+    },
+    destroyed(){
+        document.querySelector('section.body').onscroll = null;
     },
     data() {
       const self = this;

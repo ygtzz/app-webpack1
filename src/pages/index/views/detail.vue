@@ -123,8 +123,8 @@
     .circle{display:inline-block;width:13px;height:13px;border:2px solid #d1d1d1;border-radius:50%;}
     .finance-header{
         line-height:1.2;
-        .left{padding-right:10px;}
-        .right{padding-left:15px;border-left:1px solid #e5e5e5;line-height:1.4}
+        .left{padding-right:32px;}
+        .right{padding-left:38px;border-left:1px solid #e5e5e5;line-height:1.4}
     }
     .banner-top{background-color:orange;}
     .progress{display:inline-block;width:500px;height:7px;
@@ -132,12 +132,12 @@
     .info{padding:44px 26px 40px 26px;
         *{vertical-align:middle;}
     } 
-    .info-text{color:#ffa9a5;font-size:dpr(28px)}
+    .info-text{color:#ffa9a5;font-size:28px}
     .icon-publish{background-image:url('./detail/publish@2x.png');width:25px;height:28px;}
     .icon-underwrite{background-image:url('./detail/underwrite@2x.png');width:28px;height:28px;}
     .underwrite{margin-left:48px;}
     .btn-detail{background:transparent;padding:8px 20px;border:1px solid #fff;
-        border-radius:4px;color:#fff;font-size:dpr(24px);
+        border-radius:4px;color:#fff;font-size:24px;
     }
     .panel{
         background-color:#fff;
@@ -150,9 +150,9 @@
     }
     .btn-wrap{margin-top:45px;text-align:center;}
     .btn-buy{width:698px;height:100px;text-align:center;border-radius:0;
-        background-color:#ff8200;color:#fff;border:0;font-size:dpr(36px);
+        background-color:#ff8200;color:#fff;border:0;font-size:36px;
     }
-    .accpet{margin-top:30px;font-size:dpr(24px);padding-left:26px;
+    .accpet{margin-top:30px;font-size:24px;padding-left:26px;
         *{vertical-align:middle;}
         .cbk{height:37px;width:37px;border:1px solid #ccc;display:inline-block;
             &.active{

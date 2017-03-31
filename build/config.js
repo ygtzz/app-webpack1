@@ -35,7 +35,7 @@ module.exports = {
         rootValue: 750 / 16,
         unitPrecision: 5,
         propWhiteList: [],
-        propBlackList: ['font-size','border-bottom','border-top','border-left','border-right','border','filter'],
+        propBlackList: ['border-bottom','border-top','border-left','border-right','border','filter'],
         selectorBlackList: ['ignore'],
         ignoreIdentifier: false,
         replace: true,

@@ -3,7 +3,7 @@ html,body{
     width:100%;
     overflow:hidden;
     font-family:'PingFang SC', 'STHeitiSC-Light', 'Helvetica-Light', arial, sans-serif;
-    font-size:dpr(28px);
+    font-size:28px;
     line-height:1.5;
 }
 /*reset*/

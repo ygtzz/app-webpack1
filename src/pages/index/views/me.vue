@@ -153,10 +153,10 @@
     .eye{margin-left:18px;}
     .drawmoney{width:50%;color:#ff8200;}
     .orange{color:#ffe2bd;}
-    .p-count{font-size:dpr(60px);color:#fff}
+    .p-count{font-size:60px;color:#fff}
     .balance-wrap{width:49%;}
     .income-wrap{width:49%;}
-    .balance,.income{font-size:dpr(36px)}
+    .balance,.income{font-size:36px}
     .operation{height:100px;line-height:100px;border-bottom:1px solid #e5e5e5;}
     .info-item{float:left;width:49.9%;text-align:center;padding:30px;
         border-bottom:1px solid #e5e5e5;
@@ -167,7 +167,7 @@
     .item-inner{padding-top:40px;padding-bottom:30px;
         *{vertical-align:middle}
         .text{padding-left:33px;}
-        .other{color:#999;font-size:dpr(28px);float:right;}
+        .other{color:#999;font-size:28px;float:right;}
     }
     .item:not(:last-child) .item-inner{border-bottom:1px solid #e5e5e5;}
     .text-info{height:112px;line-height:112px;letter-spacing:5px;color:#cbcbcb;}

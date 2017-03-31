@@ -268,21 +268,21 @@ a:hover { text-decoration: underline; }
 .gc { color: #ccc; }
 /* font-size */
 .f0 { font-size: 0; }
-.f10 { font-size: dpr(10px); }
-.f12 { font-size: dpr(12px); }
-.f13 { font-size: dpr(13px); }
-.f14 { font-size: dpr(14px); }
-.f16 { font-size: dpr(16px); }
-.f18 { font-size: dpr(18px); }
-.f20 { font-size: dpr(20px); }
-.f22 { font-size: dpr(22px); }
-.f24 { font-size: dpr(24px); }
-.f28 { font-size: dpr(28px); }
-.f30 { font-size: dpr(30px); }
-.f36 { font-size: dpr(36px);}
-.f40 { font-size: dpr(40px); }
-.f50 { font-size: dpr(50px); }
-.f60 { font-size: dpr(60px); }
+.f10 { font-size: 10px; }
+.f12 { font-size: 12px; }
+.f13 { font-size: 13px; }
+.f14 { font-size: 14px; }
+.f16 { font-size: 16px; }
+.f18 { font-size: 18px; }
+.f20 { font-size: 20px; }
+.f22 { font-size: 22px; }
+.f24 { font-size: 24px; }
+.f28 { font-size: 28px; }
+.f30 { font-size: 30px; }
+.f36 { font-size: 36px;}
+.f40 { font-size: 40px; }
+.f50 { font-size: 50px; }
+.f60 { font-size: 60px; }
 /* font-family */
 .fa { font-family: Arial; }
 .ft { font-family: Tahoma; }
