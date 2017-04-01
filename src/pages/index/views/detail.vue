@@ -98,7 +98,7 @@
             </span>
         </div>
         <div class="time">
-            {{time}}
+            <div>{{time}}</div>
         </div>
     </div>
 </template>
@@ -176,6 +176,7 @@ export default {
     name:'v-detail',
     created() {
         this.fStartCountdown();
+        this.fSplitMoney(66666668.00);
     },
     data() {
       return {
@@ -199,26 +200,41 @@ export default {
             let sTime = '';
             let nDiff = endTime - currentTime;
             const nDays = Math.floor(nDiff/(24*60*60*1000));
-            if(nDays > 0){
+            if(nDays >= 0){
                 nDiff -= nDays * (24*60*60*1000);
                 sTime += nDays + '天';
             }
             const nHour = Math.floor(nDiff/(60*60*1000));
-            if(nHour > 0){
+            if(nHour >= 0){
                 nDiff -= nHour * (60*60*1000);
                 sTime += (nHour < 10 ? ('0' + nHour) : nHour) + '时';
             }
             const nMin = Math.floor(nDiff/(60*1000));
-            if(nMin > 0){
+            if(nMin >= 0){
                 nDiff -= nMin * (60*1000);
                 sTime += (nMin < 10 ? ('0' + nMin) : nMin) + '分';
             }
             const nSecond = Math.floor(nDiff/1000);
-            if(nSecond){
+            if(nSecond >= 0){
                 nDiff -= nSecond * 1000;
                 sTime += (nSecond < 10 ? ('0' + nSecond) : nSecond) + '秒';
             }
             return sTime;
+        },
+        fSplitMoney(money){
+            money = String(money);
+            const aMoney = money.split('.');
+            const aSplit = aMoney[0].split('').reverse();
+            for(let i=0;i<aSplit.length;i++){
+                if(i % 3 == 2){
+                    aSplit[i] = ',' + aSplit[i];
+                }
+            }
+            let result = aSplit.reverse().join('');
+            if(aMoney.length > 1){
+                result += '.' + aMoney[1];
+            }
+            return result;
         }
     },
     components:{
