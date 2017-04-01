@@ -6,12 +6,14 @@
                 <span @click="fCloseNotice" class="close r">×</span>
             </div>
             <div class="home-banner">
-                <div ref="user" class="user fix f24">
-                    <span class="icon avatar dib vm">
-                        <img :src="model.user.photo" alt="avatar">
-                    </span>
-                    <span class="name vm" v-text="model.user.nickName"></span>
-                    <span class="icon r icon-tree tree"></span>
+                <div class="user-wrap">
+                    <div ref="user" class="user fix f24">
+                        <span class="icon avatar dib vm">
+                            <img :src="model.user.photo" alt="avatar">
+                        </span>
+                        <span class="name vm" v-text="model.user.nickName"></span>
+                        <span class="icon r icon-tree tree"></span>
+                    </div>
                 </div>
                 <div class="banner-top">
                     <div class="title-wrap tc">
@@ -97,7 +99,7 @@
 <style lang="sass" scoped>
     .home{background:#f2f2f2;width:100%;
         .header,.info,.panel{background:#fff}
-        .header{height:570px;}
+        .header{}
     }
     .home-banner{
         .banner-top{
@@ -118,6 +120,7 @@
     }
     .close{width:36px;height:36px;line-height:32px;text-align:center;border:2px solid #bbb;border-radius:50%;
         color:#bbb;margin-top:8px;}
+    .user-wrap{height:106px;}
     .user{height:106px;padding-left:25px;padding-right:20px;line-height:106px;width:100%;
         top:0;background-image:url('./common/banner-1px.png');}
     .user-fix{position:fixed;transform:scale(1);z-index:9999;top:0;left:0;}

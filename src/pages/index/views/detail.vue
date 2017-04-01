@@ -97,6 +97,9 @@
                 <a href="">《理财平台服务协议》</a>
             </span>
         </div>
+        <div class="time">
+            {{time}}
+        </div>
     </div>
 </template>
 <style lang="sass" scoped>
@@ -172,11 +175,12 @@ import {mapGetters,mapActions} from "vuex";
 export default {
     name:'v-detail',
     created() {
-        
+        this.fStartCountdown();
     },
     data() {
       return {
-         bAgree:false
+         bAgree:false,
+         time:''
       }
     },
     computed:{
@@ -185,6 +189,36 @@ export default {
     methods:{
         fMenuItemClick(index){
             
+        },
+        fStartCountdown(){
+            this.countDown = setInterval(() => {
+                this.time = this.fCountdown(new Date('2017/04/01 19:00:00').getTime(),new Date().getTime());
+            },1000);
+        },
+        fCountdown(endTime,currentTime){
+            let sTime = '';
+            let nDiff = endTime - currentTime;
+            const nDays = Math.floor(nDiff/(24*60*60*1000));
+            if(nDays > 0){
+                nDiff -= nDays * (24*60*60*1000);
+                sTime += nDays + '天';
+            }
+            const nHour = Math.floor(nDiff/(60*60*1000));
+            if(nHour > 0){
+                nDiff -= nHour * (60*60*1000);
+                sTime += (nHour < 10 ? ('0' + nHour) : nHour) + '时';
+            }
+            const nMin = Math.floor(nDiff/(60*1000));
+            if(nMin > 0){
+                nDiff -= nMin * (60*1000);
+                sTime += (nMin < 10 ? ('0' + nMin) : nMin) + '分';
+            }
+            const nSecond = Math.floor(nDiff/1000);
+            if(nSecond){
+                nDiff -= nSecond * 1000;
+                sTime += (nSecond < 10 ? ('0' + nSecond) : nSecond) + '秒';
+            }
+            return sTime;
         }
     },
     components:{
