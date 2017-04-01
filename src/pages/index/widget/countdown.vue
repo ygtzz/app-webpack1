@@ -37,7 +37,6 @@ export default {
             self.timer = setInterval(function(){
                 self.countTime = self.fCountdown(endTime,startTime);
                 startTime += 1000;
-                console.log('countdown: ' + startTime)
             },1000);
         },
         fCountdown(endTime,currentTime){
