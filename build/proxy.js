@@ -1,4 +1,4 @@
-var target = 'http://wb.symdata.cn/wb/app/h5';
+var target = 'http://t1.vlicai.yinker.net/wb/app/h5';
 
 module.exports = {
     '/index/requestIndexData': {
