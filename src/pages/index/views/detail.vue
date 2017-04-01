@@ -100,9 +100,13 @@
         <div class="time">
             <div>{{time}}</div>
         </div>
+        <div>
+            <c-countdown class="countdown" :endTime="endTime" :startTime="startTime"></c-countdown>
+        </div>
     </div>
 </template>
 <style lang="sass" scoped>
+    .countdown{padding:15px 30px;border:1px solid #ccc;color:orange;font-size:50px;}
     .detail{background-color:#f2f2f2;height:100%;width:100%;}
     .header{height:560px;position:relative;
         .banner-top{
@@ -170,7 +174,11 @@
     }
 </style>
 <script>
+import Vue from 'vue';
 import {mapGetters,mapActions} from "vuex";
+import countdown from 'index/widget/countdown.vue';
+
+Vue.component('c-countdown',countdown);
 
 export default {
     name:'v-detail',
@@ -181,7 +189,9 @@ export default {
     data() {
       return {
          bAgree:false,
-         time:''
+         time:'',
+         startTime:new Date().getTime(),
+         endTime:new Date('2017/04/03 19:00:00').getTime()
       }
     },
     computed:{
