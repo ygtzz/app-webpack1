@@ -116,7 +116,7 @@
                 </li>
             </ul>
         </div>
-        <div class="text-info mt20 tc">
+        <div class="text-info tc">
             <span class="line vm"></span>
             <span class="weibo">微博上的理财产品</span>
             <span class="line vm"></span>

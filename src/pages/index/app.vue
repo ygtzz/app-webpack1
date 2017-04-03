@@ -48,6 +48,8 @@ export default {
 } 
 </script>
 <style lang="sass" scoped>
+    $footHeight: 104px;
+
     #app{
         height:100%;width:100%;
     }
@@ -64,11 +66,11 @@ export default {
         overflow:hidden;
         overflow-y:auto;
         -webkit-overflow-scrolling:touch;
-        padding-bottom:92px;
+        padding-bottom:$footHeight;
     }
     .bottom-fixed{
         border-top: 1px solid #E7E7E7;
-        height:104px;
+        height:$footHeight;
         line-height:1;
         position:absolute;
         bottom:0;

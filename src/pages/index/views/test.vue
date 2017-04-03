@@ -22,7 +22,7 @@
 </template>
 <style lang="sass" scoped>
     .slide{width:750px;height:300px;text-align:center;font-size:80px;line-height:300px;}
-    .slide:nth-child(1){background-color:lightblue;}
+    .slide:nth-child(1){background-color:pink;}
     .slide:nth-child(2){background-color:lightgreen;}
     .slide:nth-child(3){background-color:pink;}    
 </style>
