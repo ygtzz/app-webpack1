@@ -1,12 +1,14 @@
 <template>
     <div class="productList">
         <div class="productList-banner tc">
-            <p class="f60">7%稳赚一年</p>
-            <p class="f28 title2">69%用户的安心之选，投5万赚3500元</p>
-            <div class="btn-wrap">
-                <button class="btn btn-want">我要稳赚</button>
+            <div class="banner-inner">
+                <p class="f60">7%稳赚一年</p>
+                <p class="f28 title2">69%用户的安心之选，投5万赚3500元</p>
+                <div class="btn-wrap">
+                    <button class="btn btn-want">我要稳赚</button>
+                </div>
             </div>
-            <div class="bg"></div>
+            <!--<div class="bg"></div>-->
         </div>
         <div v-for="item in model.financeLoanList" class="panel">
             <div class="header">
@@ -47,13 +49,12 @@
     .productList{
         background-color:#f2f2f2;
     }
-    .productList-banner{padding-top:68px;padding-bottom:50px;position:relative;
-            background-color:rgba(0,0,0,.9);color:#fff;
-            .title2{margin-top:18px;}    
+    .productList-banner{position:relative;
+            color:#fff;
+            background-image:url('./productList/banner-bg.png');
+            .banner-inner{height:100%;width:100%;padding-top:68px;padding-bottom:50px;background-color:rgba(0,0,0,.65);}
+            .title2{margin-top:18px;}   
             .btn-wrap{margin-top:39px;}
-            .bg{background-image:url('./productList/banner-bg.png');
-                width:100%;height:100%;top:0;left:0;
-                position:absolute;}     
     }
     .btn-want{padding:12px 32px;border:1px solid #fff;background-color:transparent;}
     .panel{background-color:#fff;margin-top:20px;
