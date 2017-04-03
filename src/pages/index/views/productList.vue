@@ -77,8 +77,8 @@
         height:39px;line-height:1;color:#ffa200;
         display:inline-block;
         *{vertical-align:middle;}
-        .icon{background-color:#ffa200;float:left;}
-        .text{padding-left:9px;padding-right:7px;line-height:36px;}
+        .icon{background-color:#ffa200;}
+        .text{padding-left:0px;padding-right:7px;line-height:36px;}
     }
     .icon-short{background-image:url('./productList/rmb@2x.png');height:100%;width:35px;
         background-size:25px 23px;}
