@@ -16,7 +16,12 @@
                 <div class="slide">
                     3
                 </div>
-            </c-swiperItem>            
+            </c-swiperItem>
+            <c-swiperItem>
+                <div class="slide">
+                    4
+                </div>
+            </c-swiperItem>
         </c-swiper>
     </div>
 </template>

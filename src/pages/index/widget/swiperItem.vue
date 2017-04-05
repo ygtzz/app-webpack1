@@ -11,9 +11,9 @@ export default {
     name:'c-swiperItem',
     mounted(){
         const el = this.$el;
-        el.addEventListener('touchstart',this.fTouchstart);
-        el.addEventListener('touchmove',this.fTouchmove);
-        el.addEventListener('touchend',this.fTouchEnd);
+        // el.addEventListener('touchstart',this.fTouchstart);
+        // el.addEventListener('touchmove',this.fTouchmove);
+        // el.addEventListener('touchend',this.fTouchEnd);
     },
     data(){
         return {
