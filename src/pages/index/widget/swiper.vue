@@ -28,14 +28,13 @@ export default {
         
     },
     mounted(){
-        this.$nextTick(() => {
-            console.log(this.$refs.slideWrapper.children)
-            this.pageCount = this.$refs.slideWrapper.children.length;
-        });
+        this.fInitPages();        
+        this.pageCount = this.$children.length;
     },
     data(){
         return {
-            pageCount:1
+            pageCount:1,
+            swipeW:window.innerWidth
         }
     },
     computed:{
@@ -45,6 +44,70 @@ export default {
         
     },
     methods:{
+        fInitPages(){
+            const self = this;
+            this.$children.forEach((item,index) => {
+                item.style.webkitTransform = 'translate3d(' + index * self.swipeW + 'px,0,0)';
+            });
+        },
+        fBindEvent:function(){
+            const self = this,el = self.$el;
+            //wrap add event,not child
+            el.addEventListener('touchstart',function(e){
+                self.startX = e.touches[0].pageX;
+                self.startTime = +new Date();
+                //clear offsetX
+                self.offsetX = 0;
+            });
+            el.addEventListener('touchmove',function(e){
+                e.preventDefault();
+                //e.stopPropagation();
+                self.offsetX = e.touches[0].pageX - self.startX;
+                //alert(self.offsetX)
+                for(var i=self.idx-1;i<self.idx+2;i++){
+                    if(self.pages[i]){
+                        //self.pages[i].style.transition = 'transform 0 ease-out';
+                        self.pages[i].style.webkitTransition = '-webkit-transform 0 ease-out';                                                                        
+                    }
+                }
+                for(var i=self.idx-1;i<self.idx+2;i++){
+                    if(self.pages[i]){
+                        //self.pages[i].style.transform = 'translate3d('+ ((i-self.idx)*self.swipeW + self.offsetX) +'px,0,0)';
+                        self.pages[i].style.webkitTransform = 'translate3d('+ ((i-self.idx)*self.swipeW + self.offsetX) +'px,0,0)';                        
+                    }
+                }
+            });
+            el.addEventListener('touchend',function(e){
+                e.preventDefault();
+                //e.stopPropagation();            
+                var boundary = self.swipeW/6,
+                    endTime = +new Date();
+                //slow swipe,more than 300ms
+                if(endTime - self.startTime > 300){
+                    if(self.offsetX >= boundary){
+                        self.fGoIndex(-1)
+                    }
+                    else if(self.offsetX <= -boundary){
+                        self.fGoIndex(1);
+                    }
+                    else{
+                        self.fGoIndex(0);
+                    }
+                }
+                //quick swipe
+                else{
+                    if(self.offsetX > 50){
+                        self.fGoIndex(-1);
+                    }
+                    else if(self.offsetX < -50){
+                        self.fGoIndex(1);
+                    }
+                    else{
+                        self.fGoIndex(0);
+                    }
+                }
+            });
+        },
     },
     components:{
 

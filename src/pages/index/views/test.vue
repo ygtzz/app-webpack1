@@ -1,5 +1,5 @@
 <template>
-    <div class="test">
+    <div class="test stage">
         <h2>test</h2>
         <c-swiper>
             <c-swiperItem>

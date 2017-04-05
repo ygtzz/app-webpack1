@@ -1,7 +1,5 @@
 <template>
-    <div @touchstart="fTouchstart" @touchmove="fTouchmove" @touchend="fTouchend"
-         @touchcancel="fTouchcancel" class="swiperItem"
-         :style="style">
+    <div class="swiperItem" :style="style">
         <slot></slot>
     </div>
 </template>
@@ -11,6 +9,12 @@
 <script>
 export default {
     name:'c-swiperItem',
+    mounted(){
+        const el = this.$el;
+        el.addEventListener('touchstart',this.fTouchstart);
+        el.addEventListener('touchmove',this.fTouchmove);
+        el.addEventListener('touchend',this.fTouchEnd);
+    },
     data(){
         return {
             startX:0,
