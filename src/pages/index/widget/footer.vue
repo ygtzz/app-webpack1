@@ -1,6 +1,6 @@
 <template>
     <div class="footer">
-        <router-link :class="{'active':sNavActiveName==item.name}" v-for="item in aNav" :to="{name:item.name}">
+        <router-link :class="{'active':sNavActiveName==item.name}" v-for="item in aNav" :to="{name:item.name}" :key="item.name">
             <div @click="fNavClick(item)" class="inner">
                 <i class="icon" :class="[item.icon]"></i>
                 <p class="mt5" v-text="item.text"></p>

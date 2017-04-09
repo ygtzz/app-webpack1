@@ -27,7 +27,7 @@
             </div>
             <div class="slide-wrap">
                 <mt-swipe class="slide-list" :auto="4000">
-                    <mt-swipe-item class="slide" v-for="item in model.bannerList">
+                    <mt-swipe-item class="slide" v-for="(item,index) in model.bannerList" :key="'slide'+index">
                         <img :src="item.protoMongoFileId">
                     </mt-swipe-item>
                 </mt-swipe>

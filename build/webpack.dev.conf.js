@@ -5,6 +5,7 @@ var baseWebapckConfig = require('./webpack.base.conf');
 var config = require('./config');
 var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var postcssCfg = require('./postcss.config');
 
 var aPlugin = [
     new OpenBrowserPlugin({ url: 'http://localhost:' + config.dev.port }),
@@ -15,7 +16,7 @@ var aPlugin = [
         __DEV__: JSON.stringify(JSON.parse('true'))
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin()
 ];
 
 var oEntry = baseWebapckConfig.entry,
@@ -33,20 +34,51 @@ aEntry.forEach(function(item){
 
 module.exports = merge(baseWebapckConfig,{
     module: {
-        loaders: [
-            {test: /\.css$/, loader: 'style!css?importLoaders=1!postcss'},
-            {test: /\.scss$/, loader:'style!css?importLoaders=2!postcss!sass'},
+        // loaders: [
+        //     {test: /\.css$/, loader: 'style!css?importLoaders=1!postcss'},
+        //     {test: /\.scss$/, loader:'style!css?importLoaders=2!postcss!sass'},
+        //     {
+        //         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        //         loader: 'url?limit=10000&name=/static/images/[name].[ext]'
+        //     }
+        // ]
+        rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    { loader: 'style-loader'},
+                    { loader: 'css-loader' },
+                    { loader: 'postcss-loader', options: postcssCfg }
+                ]
+            },
+            {
+                test: /\.scss$/, 
+                use: [
+                    { loader: 'style-loader' },
+                    { loader: 'css-loader' },
+                    { loader: 'postcss-loader', options: postcssCfg},
+                    { loader: 'sass-loader' }
+                ]
+            },
+            {   
+                test: /\.vue$/, loader: 'vue-loader',
+                options:{
+                    // loaders: {
+                    //     css: "vue-style-loader!css-loader!postcss-loader",
+                    //     sass: "vue-style-loader!css-loader!postcss-loader!sass-loader"
+                    // },
+                    postcss: postcssCfg
+                }
+            },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                loader: 'url?limit=10000&name=/static/images/[name].[ext]'
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: '/static/images/[name].[ext]'
+                }
             }
         ]
-    },
-    vue: {
-        loaders: {
-            css: "style!css?importLoaders=1!postcss",
-            sass: "style!css?importLoaders=2!postcss!sass"
-        }
     },
     plugins: aPlugin,
     devtool: 'cheap-source-map',

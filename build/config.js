@@ -4,7 +4,7 @@ var proxy = require('./proxy');
 var sBase = './src/';
 module.exports = {
     sBase: sBase,
-    sDist: '/dist',
+    sDist: path.resolve(__dirname, '../dist'),
     sDest: './dist',
     entry: {
         index: sBase + 'pages/index/index.js'
@@ -22,8 +22,8 @@ module.exports = {
     },
     prod: {
         path: {
-            script: '/static/scripts/',
-            style: '/static/style/'
+            script: 'static/scripts/',
+            style: 'static/style/'
         }
     },
     designWidth:750,
