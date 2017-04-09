@@ -38,7 +38,7 @@ export default {
         },
         loop:{
             type:Boolean,
-            default:true
+            default:false
         }
     },
     data(){
@@ -144,9 +144,6 @@ export default {
                 self.$children[item].style.webkitTransition = '-webkit-transform ' + self.speed + 'ms ease-out';
             });
             aPageIndex.forEach((item,index) => {
-                // if(self.idx != item){
-                //     self.$children[item].style.webkitTransition = '-webkit-transform 0 ease-out';
-                // }
                 self.$children[item].style.webkitTransform = 'translate3d(' + (index-1)*self.swipeW + 'px,0,0)';
             });
         },

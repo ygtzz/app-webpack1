@@ -184,7 +184,7 @@ export default {
     name:'v-detail',
     created() {
         this.fStartCountdown();
-        this.fSplitMoney(66666668.00);
+        console.log(this.fSplitMoney(666668.00));
     },
     data() {
       return {
@@ -243,6 +243,9 @@ export default {
             let result = aSplit.reverse().join('');
             if(aMoney.length > 1){
                 result += '.' + aMoney[1];
+            }
+            if(result[0] == ','){
+                result = result.slice(1);
             }
             return result;
         }
