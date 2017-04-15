@@ -130,7 +130,9 @@ export default {
         
     },
     filters:{
-        
+        fSplitMoney(val){
+            return val + '$';
+        }
     }
 }
 </script>

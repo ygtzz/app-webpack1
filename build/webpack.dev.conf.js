@@ -5,7 +5,6 @@ var baseWebapckConfig = require('./webpack.base.conf');
 var config = require('./config');
 var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
-var postcssCfg = require('./postcss.config');
 
 var aPlugin = [
     new OpenBrowserPlugin({ url: 'http://localhost:' + config.dev.port }),
@@ -47,27 +46,37 @@ module.exports = merge(baseWebapckConfig,{
                 test: /\.css$/,
                 use: [
                     { loader: 'style-loader'},
-                    { loader: 'css-loader' },
-                    { loader: 'postcss-loader', options: postcssCfg }
+                    { 
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 1
+                        } 
+                    },
+                    { loader: 'postcss-loader'}
                 ]
             },
             {
                 test: /\.scss$/, 
                 use: [
                     { loader: 'style-loader' },
-                    { loader: 'css-loader' },
-                    { loader: 'postcss-loader', options: postcssCfg},
+                    { 
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 2
+                        } 
+                    },
+                    { loader: 'postcss-loader'},
                     { loader: 'sass-loader' }
                 ]
             },
             {   
                 test: /\.vue$/, loader: 'vue-loader',
                 options:{
-                    // loaders: {
-                    //     css: "vue-style-loader!css-loader!postcss-loader",
-                    //     sass: "vue-style-loader!css-loader!postcss-loader!sass-loader"
-                    // },
-                    postcss: postcssCfg
+                    loaders: {
+                        css: "vue-style-loader!css-loader!postcss-loader",
+                        sass: "vue-style-loader!css-loader!postcss-loader!sass-loader"
+                    },
+                    //postcss: postcssCfg
                 }
             },
             {

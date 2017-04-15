@@ -8,7 +8,6 @@ var merge = require('webpack-merge');
 var WebpackChunkHash = require('webpack-chunk-hash');
 var baseWebapckConfig = require('./webpack.base.conf');
 var config = require('./config');
-var postcssCfg = require('./postcss.config');
 
 var oEntry = baseWebapckConfig.entry,
     aEntry = Object.keys(oEntry);
@@ -41,10 +40,8 @@ var aPlugin = [
       filename: "chunk-manifest.json",
       manifestVariable: "webpackManifest"
     }),
-    new WebpackChunkHash({algorithm: 'md5'}),
-    //new webpack.optimize.OccurenceOrderPlugin(true),//webpack2 contains        
-    // DedupePlugin disabled. It breaks module IDs across builds (even when using recordsPath option)
-    //new webpack.optimize.DedupePlugin() 
+    new webpack.HashedModuleIdsPlugin(),    
+    new WebpackChunkHash()
 ];
 
 //html webpack
@@ -105,16 +102,15 @@ module.exports = merge(baseWebapckConfig, {
                     //     css: "vue-style-loader!css-loader!postcss-loader",
                     //     sass: "vue-style-loader!css-loader!postcss-loader!sass-loader"
                     // },
-                    postcss: postcssCfg
+                    // postcss: postcssCfg
                 }
             },
             {
                 test: /\.css$/, 
-                // loader: ExtractTextPlugin.extract('style','css!postcss')
                 use: ExtractTextPlugin.extract({
                     use:[
                         {loader:'css-loader'},
-                        {loader:'postcss-loader',options:postcssCfg}
+                        {loader:'postcss-loader'}
                     ],
                     fallback:[
                         {loader:'style-loader'}
@@ -123,11 +119,10 @@ module.exports = merge(baseWebapckConfig, {
             },
             {
                 test: /\.scss$/, 
-                // loader: ExtractTextPlugin.extract('css!postcss!sass')
                 use: ExtractTextPlugin.extract({
                     use:[
                         {loader:'css-loader'},
-                        {loader:'postcss-loader',options:postcssCfg},
+                        {loader:'postcss-loader'},
                         {loader:'sass-loader'}
                     ]
                 })

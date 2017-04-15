@@ -1,4 +1,4 @@
-var config = require('./config');
+var config = require('./build/config');
 
 var aPostcss = [require('autoprefixer')({browsers: ['> 5%','ie 9']})];
 if(config.enableRem){
