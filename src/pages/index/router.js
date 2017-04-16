@@ -29,6 +29,11 @@ const test = resolve => {
     resolve(require('./views/test.vue'))
   },'test')
 }
+const chart = resolve => {
+  require.ensure(['./views/chart.vue'], () => {
+    resolve(require('./views/chart.vue'))
+  },'chart')
+}
 
 export default [
     { path: '/', redirect:'/home'},
@@ -56,5 +61,10 @@ export default [
         path: '/test', 
         name:'test',
         component: test        
+    },
+    { 
+        path: '/chart', 
+        name:'chart',
+        component: chart        
     }
 ];

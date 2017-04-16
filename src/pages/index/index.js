@@ -9,6 +9,7 @@ import 'static/css/font-awesome.min.css';
 import 'static/css/site.css';
 import './index.scss';
 import routeConfig from './router.js';
+import JChart from './JChart.js';
 //import FastClick from 'fastclick';
 import App from './app.vue';
 //common Component
