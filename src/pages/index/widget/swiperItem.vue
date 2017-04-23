@@ -4,7 +4,7 @@
     </div>
 </template>
 <style lang="sass" scoped>
-    .swiperItem{position:absolute;}
+    .swiperItem{position:absolute;width:100%;height:100%}
 </style>
 <script>
 export default {

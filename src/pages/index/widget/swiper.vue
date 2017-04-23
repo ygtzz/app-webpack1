@@ -6,17 +6,17 @@
         <div class="pager-wrap">
             <ul class="pagerList">
                 <li v-for="n in pageCount" class="pagerItem">
-                    <span class="icon icon-dot"></span>
+                    <span class="icon icon-dot" :class="{'active':n==idx+1}"></span>
                 </li>
             </ul>
         </div>
     </div>
 </template>
 <style lang="sass" scoped>
-    .swiper{position:relative;}
+    .swiper{position:relative;width:100%;min-height:6.4rem;}
     .slide-wrap{position:relative;}
-    .swiperItem{}
-    .pager-wrap{position:absolute;bottom:10px;right:10px;}
+    .pager-wrap{position:absolute;bottom:10px;right:20px;}
+    .pagerItem{display:inline-block;margin-right:5px;}
     .icon-dot{width:10px;height:10px;border-radius:50%;background-color:#ccc;
         &.active{background-color:red;}
     }
@@ -48,7 +48,14 @@ export default {
             startX:0,
             startTime:0,
             offsetX:0,
-            idx:0
+            idx:0,
+            direction:'horizontal'//vertical
+        }
+    },
+    computed:{
+        towards(){
+            //up,down,left,right
+            return this.offsetX < 0 ? 'left' : 'right';
         }
     },
     methods:{
@@ -59,28 +66,6 @@ export default {
                 item.style.webkitTransform = 'translate3d(' + index * self.swipeW + 'px,0,0)';
             });
             this.$children[this.pageCount-1].style.webkitTransform = 'translate3d(' + -self.swipeW + 'px,0,0)';
-        },
-        fSwipePage(){
-            const self = this;
-            const aPageIndex = self.fGetPageIndex(self.idx);
-            aPageIndex.forEach(item => {
-                self.$children[item].style.webkitTransition = '';
-            });
-            aPageIndex.forEach((item,i) => {
-                self.$children[item].style.webkitTransform = 'translate3d('+ ((i-1)*self.swipeW + self.offsetX) +'px,0,0)';
-            });
-            // for(var i=self.idx-1;i<self.idx+2;i++){
-            //     if(self.$children[i]){
-            //         self.$children[i].style.webkitTransition = '-webkit-transform 0 ease-out';                                                                        
-            //     }
-            // }
-            // //transition与transform分开写，避免滑动出现延迟
-            // for(var i=self.idx-1;i<self.idx+2;i++){
-            //     if(self.$children[i]){
-            //         const offsetX = ((i-self.idx)*self.swipeW + self.offsetX);
-            //         self.$children[i].style.webkitTransform = 'translate3d('+ offsetX +'px,0,0)';                        
-            //     }
-            // }
         },
         fBindEvent:function(){
             const self = this,el = self.$el;
@@ -93,14 +78,26 @@ export default {
             });
             el.addEventListener('touchmove',function(e){
                 e.preventDefault();
-                //e.stopPropagation();
                 self.offsetX = e.touches[0].pageX - self.startX;
                 self.fSwipePage();
             });
-            el.addEventListener('touchend',function(e){
-                e.preventDefault();
-                //e.stopPropagation();            
+            el.addEventListener('touchend',function(e){   
                 self.fGoPage();
+            });
+        },
+        fSwipePage(){
+            const self = this;
+            const aPageIndex = self.fGetPageIndex(self.idx);
+            console.log('aPageIndex ' + aPageIndex)
+            aPageIndex.forEach(item => {
+                if(self.$children[item]){
+                    self.$children[item].style.webkitTransition = '';
+                }
+            });
+            aPageIndex.forEach((item,i) => {
+                if(self.$children[item]){
+                    self.$children[item].style.webkitTransform = 'translate3d('+ ((i-1)*self.swipeW + self.offsetX) +'px,0,0)';
+                }
             });
         },
         fGoPage(){
@@ -133,18 +130,30 @@ export default {
             }
         },  
         fGoIndex:function(n){
-            var self = this, 
+            const self = this, 
             cIdx = self.idx + n;
-            const aPageIndex = self.fGetPageIndex(cIdx);
+            let aPageIndex = self.fGetPageIndex(cIdx);
+            console.log('aPageIndex ' + aPageIndex);
             self.idx = aPageIndex[1];
-            console.log(self.$children[self.idx]);
-            //self.$children[self.idx].classList.add('swpipe-active');
-            console.log(aPageIndex)
-            aPageIndex.forEach(item => {
-                self.$children[item].style.webkitTransition = '-webkit-transform ' + self.speed + 'ms ease-out';
+            console.log('index ' + self.idx)
+            let aPageTrans = aPageIndex;
+            if(self.towards == 'left' && n != 0){
+                aPageTrans = aPageIndex.slice(0,-1);
+            }
+            else if(self.towards == 'right' && n != 0){
+                aPageTrans = aPageIndex.slice(1);
+            }
+            aPageTrans.forEach(item => {
+                if(self.$children[item]){
+                    self.$children[item].style.webkitTransition = '-webkit-transform ' + self.speed + 'ms ease-out';
+                }
             });
             aPageIndex.forEach((item,index) => {
-                self.$children[item].style.webkitTransform = 'translate3d(' + (index-1)*self.swipeW + 'px,0,0)';
+                console.log('item ' + item)
+                console.log('index ' + index)
+                if(self.$children[item]){
+                    self.$children[item].style.webkitTransform = 'translate3d(' + (index-1)*self.swipeW + 'px,0,0)';
+                }
             });
         },
         fGetPageIndex(cIdx){
@@ -175,10 +184,16 @@ export default {
                 next = next > len - 1 ? 0 : next;
             }
             else{
-                pre = pre < 0 ? 0 : pre;
-                next = next > len - 1 ? len - 1 : next;
+                pre = pre < 0 ? -1 : pre;
+                next = next > len - 1 ? len : next;
             }
-            return [pre,cIdx,next];
+            let aPageIndex = [pre,cIdx,next];
+            // if(!self.loop){
+            //     aPageIndex = aPageIndex.filter(function(item,index,arr){
+            //         return arr.indexOf(item) >= index;
+            //     })
+            // }
+            return aPageIndex;
         }
     },
     components:{
