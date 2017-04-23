@@ -1,26 +1,9 @@
 <template>
     <div class="test stage">
         <h2>test</h2>
-        <c-swiper>
-            <c-swiperItem>
-                <div class="slide">
-                    1
-                </div>
-            </c-swiperItem>
-            <c-swiperItem>
-                <div class="slide">
-                    2
-                </div>
-            </c-swiperItem>
-            <c-swiperItem>
-                <div class="slide">
-                    3
-                </div>
-            </c-swiperItem>
-            <c-swiperItem>
-                <div class="slide">
-                    4
-                </div>
+        <c-swiper class="swiper" :loop="true">
+            <c-swiperItem v-for="n in list">
+                <div class="slide">{{n}}</div>
             </c-swiperItem>
         </c-swiper>
         <div class="luck-unit" style="margin-top:500px;"></div>
@@ -28,6 +11,7 @@
     </div>
 </template>
 <style lang="sass" scoped>
+    .swiper{background-image:url('http://pic2.ooopic.com/10/55/95/20b1OOOPICfa.jpg');background-size:cover;}
     .slide{width:750px;height:300px;text-align:center;font-size:80px;line-height:300px;}
     .slide:nth-child(1){background-color:pink;}
     .slide:nth-child(2){background-color:lightgreen;}
@@ -48,22 +32,20 @@ Vue.component(swiperItem.name, swiperItem);
 export default {
     name:'v-test',
     created() {
-        
+        setTimeout(() => {
+            this.list = [1,2,3,4];
+        },3000);
     },
     data() {
       return {
-        
+        list:[]
       }
     },
     watch:{
         
     },
     computed:{
-       data(){
-           return {
-
-           }
-       }
+       
     },
     methods:{
         

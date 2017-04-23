@@ -5,7 +5,7 @@
         </div>
         <div class="pager-wrap">
             <ul class="pagerList">
-                <li v-for="n in pageCount" class="pagerItem">
+                <li v-for="n in amount" class="pagerItem">
                     <span class="icon icon-dot" :class="{'active':n==idx+1}"></span>
                 </li>
             </ul>
@@ -22,6 +22,8 @@
     }
 </style>
 <script>
+import swiperItem from './swiperItem.vue';
+
 export default {
     name:'c-swiper',
     created(){
@@ -29,11 +31,12 @@ export default {
     },
     mounted(){
         this.$nextTick(() => {
-            this.width = this.$el.getBoundingClientRect().width;
-            this.amount = this.$children.length;
-            this.fInitPages();
-            this.fBindEvent();
+            this.fBindEvent();            
+            this.init();
         });
+    },
+    destroyed(){
+        clearInterval(this.timer);
     },
     props:{
         speed:{
@@ -42,35 +45,51 @@ export default {
         },
         loop:{
             type:Boolean,
-            default:false
+            default:true
+        },
+        auto:{
+            type:Number,
+            default:3000
         }
     },
     data(){
         return {
-            pageCount:1,
             width:0,
             amount:0,
             startX:0,
             startTime:0,
             offsetX:0,
             idx:0,
-            direction:'horizontal'//vertical
+            direction:'horizontal',//vertical
+            timer:''
         }
     },
     computed:{
         towards(){
             //up,down,left,right
-            return this.offsetX < 0 ? 'left' : 'right';
+            return this.offsetX <= 0 ? 'left' : 'right';
         }
     },
     methods:{
-        fInitPages(){
+        init(){
             const self = this;
-            this.pageCount = this.$children.length;
-            this.$children.forEach((item,index) => {
-                item.style.webkitTransform = 'translate3d(' + index * 100 + '%,0,0)';
-            });
-            this.$children[this.pageCount-1].style.webkitTransform = 'translate3d(' + -100 + '%,0,0)';
+            console.log(this.$children)
+            if(this.$children.length){
+                this.width = this.$el.getBoundingClientRect().width;
+                this.amount = this.$children.length;
+                this.$children.forEach((item,index) => {
+                    item.style.webkitTransform = 'translate3d(' + index * 100 + '%,0,0)';
+                });
+                this.$children[this.amount-1].style.webkitTransform = 'translate3d(' + -100 + '%,0,0)';
+                if(this.loop){
+                    if(this.auto > 0 && this.amount > 0){
+                        this.fSetAutoPlay();
+                    }
+                }
+                else{
+                    throw new Error('component swiper: only loop mode support auto play');
+                }
+            }
         },
         fBindEvent:function(){
             const self = this,el = self.$el;
@@ -137,17 +156,28 @@ export default {
             const self = this, 
             cIdx = self.idx + n;
             let aPageIndex = self.fGetPageIndex(cIdx);
+            console.log(aPageIndex)
             self.idx = aPageIndex[1];
-            let aPageTrans = aPageIndex;
+            let aTrans = aPageIndex,
+                aTransExclude = [];
             if(self.towards == 'left' && n != 0){
-                aPageTrans = aPageIndex.slice(0,-1);
+                aTrans = aPageIndex.slice(0,-1);
+                aTransExclude = aPageIndex.slice(-1);
             }
             else if(self.towards == 'right' && n != 0){
-                aPageTrans = aPageIndex.slice(1);
+                aTrans = aPageIndex.slice(1);
+                aTransExclude = aPageIndex.slice(0,1);
             }
-            aPageTrans.forEach(item => {
+            console.log(aTrans)
+            console.log(aTransExclude)
+            aTrans.forEach(item => {
                 if(self.$children[item]){
                     self.$children[item].style.webkitTransition = '-webkit-transform ' + self.speed + 'ms ease-out';
+                }
+            });
+            aTransExclude.forEach(item => {
+                if(self.$children[item]){
+                    self.$children[item].style.webkitTransition = '';
                 }
             });
             aPageIndex.forEach((item,index) => {
@@ -189,10 +219,17 @@ export default {
             }
             let aPageIndex = [pre,cIdx,next];
             return aPageIndex;
+        },
+        fSetAutoPlay(){
+            clearInterval(this.timer);
+            this.timer = setInterval(() => {
+                this.fGoIndex(1);
+            },this.auto);
         }
+        
     },
     components:{
-
+        swiperItem
     }
 }
 </script>
