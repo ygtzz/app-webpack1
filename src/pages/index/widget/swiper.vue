@@ -14,7 +14,7 @@
 </template>
 <style lang="sass" scoped>
     .swiper{position:relative;width:100%;min-height:6.4rem;}
-    .slide-wrap{position:relative;}
+    .slide-wrap{position:relative;width:100%;}
     .pager-wrap{position:absolute;bottom:10px;right:20px;}
     .pagerItem{display:inline-block;margin-right:5px;}
     .icon-dot{width:10px;height:10px;border-radius:50%;background-color:#ccc;
@@ -28,8 +28,12 @@ export default {
         
     },
     mounted(){
-        this.fInitPages();
-        this.fBindEvent();        
+        this.$nextTick(() => {
+            this.width = this.$el.getBoundingClientRect().width;
+            this.amount = this.$children.length;
+            this.fInitPages();
+            this.fBindEvent();
+        });
     },
     props:{
         speed:{
@@ -44,7 +48,10 @@ export default {
     data(){
         return {
             pageCount:1,
-            swipeW:window.innerWidth,
+            // swipeW:window.innerWidth,
+            width:0,
+            amount:0,
+            swipeW:100,
             startX:0,
             startTime:0,
             offsetX:0,
@@ -63,9 +70,9 @@ export default {
             const self = this;
             this.pageCount = this.$children.length;
             this.$children.forEach((item,index) => {
-                item.style.webkitTransform = 'translate3d(' + index * self.swipeW + 'px,0,0)';
+                item.style.webkitTransform = 'translate3d(' + index * self.swipeW + '%,0,0)';
             });
-            this.$children[this.pageCount-1].style.webkitTransform = 'translate3d(' + -self.swipeW + 'px,0,0)';
+            this.$children[this.pageCount-1].style.webkitTransform = 'translate3d(' + -self.swipeW + '%,0,0)';
         },
         fBindEvent:function(){
             const self = this,el = self.$el;
@@ -88,7 +95,6 @@ export default {
         fSwipePage(){
             const self = this;
             const aPageIndex = self.fGetPageIndex(self.idx);
-            console.log('aPageIndex ' + aPageIndex)
             aPageIndex.forEach(item => {
                 if(self.$children[item]){
                     self.$children[item].style.webkitTransition = '';
@@ -96,7 +102,7 @@ export default {
             });
             aPageIndex.forEach((item,i) => {
                 if(self.$children[item]){
-                    self.$children[item].style.webkitTransform = 'translate3d('+ ((i-1)*self.swipeW + self.offsetX) +'px,0,0)';
+                    self.$children[item].style.webkitTransform = 'translate3d('+ ((i-1)*self.swipeW + (self.offsetX/self.width)*100) +'%,0,0)';
                 }
             });
         },
@@ -149,10 +155,8 @@ export default {
                 }
             });
             aPageIndex.forEach((item,index) => {
-                console.log('item ' + item)
-                console.log('index ' + index)
                 if(self.$children[item]){
-                    self.$children[item].style.webkitTransform = 'translate3d(' + (index-1)*self.swipeW + 'px,0,0)';
+                    self.$children[item].style.webkitTransform = 'translate3d(' + (index-1)*self.swipeW + '%,0,0)';
                 }
             });
         },
