@@ -48,10 +48,8 @@ export default {
     data(){
         return {
             pageCount:1,
-            // swipeW:window.innerWidth,
             width:0,
             amount:0,
-            swipeW:100,
             startX:0,
             startTime:0,
             offsetX:0,
@@ -70,9 +68,9 @@ export default {
             const self = this;
             this.pageCount = this.$children.length;
             this.$children.forEach((item,index) => {
-                item.style.webkitTransform = 'translate3d(' + index * self.swipeW + '%,0,0)';
+                item.style.webkitTransform = 'translate3d(' + index * 100 + '%,0,0)';
             });
-            this.$children[this.pageCount-1].style.webkitTransform = 'translate3d(' + -self.swipeW + '%,0,0)';
+            this.$children[this.pageCount-1].style.webkitTransform = 'translate3d(' + -100 + '%,0,0)';
         },
         fBindEvent:function(){
             const self = this,el = self.$el;
@@ -102,13 +100,13 @@ export default {
             });
             aPageIndex.forEach((item,i) => {
                 if(self.$children[item]){
-                    self.$children[item].style.webkitTransform = 'translate3d('+ ((i-1)*self.swipeW + (self.offsetX/self.width)*100) +'%,0,0)';
+                    self.$children[item].style.webkitTransform = 'translate3d('+ ((i-1)*100 + (self.offsetX/self.width)*100) +'%,0,0)';
                 }
             });
         },
         fGoPage(){
             const self = this;
-            const boundary = self.swipeW/4,
+            const boundary = self.width/4,
                   endTime = +new Date();
             //slow swipe,more than 300ms
             if(endTime - self.startTime > 300){
@@ -139,9 +137,7 @@ export default {
             const self = this, 
             cIdx = self.idx + n;
             let aPageIndex = self.fGetPageIndex(cIdx);
-            console.log('aPageIndex ' + aPageIndex);
             self.idx = aPageIndex[1];
-            console.log('index ' + self.idx)
             let aPageTrans = aPageIndex;
             if(self.towards == 'left' && n != 0){
                 aPageTrans = aPageIndex.slice(0,-1);
@@ -156,7 +152,7 @@ export default {
             });
             aPageIndex.forEach((item,index) => {
                 if(self.$children[item]){
-                    self.$children[item].style.webkitTransform = 'translate3d(' + (index-1)*self.swipeW + '%,0,0)';
+                    self.$children[item].style.webkitTransform = 'translate3d(' + (index-1)*100 + '%,0,0)';
                 }
             });
         },
@@ -192,11 +188,6 @@ export default {
                 next = next > len - 1 ? len : next;
             }
             let aPageIndex = [pre,cIdx,next];
-            // if(!self.loop){
-            //     aPageIndex = aPageIndex.filter(function(item,index,arr){
-            //         return arr.indexOf(item) >= index;
-            //     })
-            // }
             return aPageIndex;
         }
     },
