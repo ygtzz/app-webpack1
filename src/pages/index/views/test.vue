@@ -6,7 +6,7 @@
                 <div class="slide">{{n}}</div>
             </c-swiperItem>
         </c-swiper>
-        <div class="luck-unit" style="margin-top:500px;"></div>
+        <button @click="fToast">toast</button>
         
     </div>
 </template>
@@ -32,9 +32,9 @@ Vue.component(swiperItem.name, swiperItem);
 export default {
     name:'v-test',
     created() {
-        setTimeout(() => {
-            this.list = [1,2,3,4];
-        },3000);
+        // setTimeout(() => {
+        //     this.list = [1,2,3,4];
+        // },3000);
     },
     data() {
       return {
@@ -48,7 +48,24 @@ export default {
        
     },
     methods:{
-        
+        fToast(){
+this.$toast('lalala1',{
+    mode:'queue',
+    duration:2000
+});
+this.$toast('lalala2',{
+    mode:'queue',
+    duration:2000
+});
+this.$toast('lalala3',{
+    mode:'queue',
+    duration:2000
+});
+this.$toast('lalala4',{
+    mode:'queue',
+    duration:2000
+});
+        }
     },
     components:{
         
