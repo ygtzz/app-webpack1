@@ -111,10 +111,10 @@
     .header{height:560px;position:relative;
         .banner-top{
             height:388px;
-            background-image:url('./detail/banner-detail.png');
+            background-image:url('./images/banner-detail.png');
             background-size:100% 100%;
         }
-        .arc{height:62px;background-image:url('./detail/banner-detail-arc.png')}
+        .arc{height:62px;background-image:url('./images/banner-detail-arc.png')}
     }
     .finance{height:430px;width:698px;position:absolute;bottom:0;
         left:50%;transform:translateX(-50%);padding:58px;
@@ -140,8 +140,8 @@
         *{vertical-align:middle;}
     } 
     .info-text{color:#ffa9a5;font-size:28px}
-    .icon-publish{background-image:url('./detail/publish@2x.png');width:25px;height:28px;}
-    .icon-underwrite{background-image:url('./detail/underwrite@2x.png');width:28px;height:28px;}
+    .icon-publish{background-image:url('./images/publish@2x.png');width:25px;height:28px;}
+    .icon-underwrite{background-image:url('./images/underwrite@2x.png');width:28px;height:28px;}
     .underwrite{margin-left:48px;}
     .btn-detail{background:transparent;padding:8px 20px;border:1px solid #fff;
         border-radius:4px;color:#fff;font-size:24px;
@@ -163,7 +163,7 @@
         *{vertical-align:middle;}
         .cbk{height:37px;width:37px;border:1px solid #ccc;display:inline-block;
             &.active{
-                background-image:url('./detail/cbk-j@2x.png');
+                background-image:url('./images/cbk-j@2x.png');
                 background-repeat:no-repeat;
                 background-size:27px 27px;
                 background-position:center;

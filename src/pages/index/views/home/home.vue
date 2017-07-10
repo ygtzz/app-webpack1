@@ -42,7 +42,7 @@
                     <ul class="fast-list">
                         <li class="fast-item" v-for="item in model.fastData.data">
                             <p class="fast-title">{{item.name}}({{item.days}})</p>
-                            <p class="c-orange f40">?2.6%~3.1%</p>
+                            <p class="c-orange f40">2.6%~3.1%</p>
                         </li>
                     </ul>
                 </div>
@@ -104,14 +104,14 @@
     .home-banner{
         .banner-top{
             height:304px;
-            background-image:url('./common/banner-1px.png');
+            background-image:url('../common/banner-1px.png');
             background-size:100% 100%;
             background-color:#ff5a00;
             padding-top:42px;
         }
         .arc{
             height:24px;
-            background-image:url('./home/banner-home-arc.png');
+            background-image:url('./images/banner-home-arc.png');
             background-size: 100% 100%;
         }
     }
@@ -122,9 +122,9 @@
         color:#bbb;margin-top:8px;}
     .user-wrap{height:106px;}
     .user{height:106px;padding-left:25px;padding-right:20px;line-height:106px;width:100%;
-        top:0;background-image:url('./common/banner-1px.png');}
+        top:0;background-image:url('../common/banner-1px.png');}
     .user-fix{position:fixed;transform:scale(1);z-index:9999;top:0;left:0;}
-    .icon-tree{background-image:url('./home/tree@2x.png');width:70px;height:80px;
+    .icon-tree{background-image:url('./images/tree@2x.png');width:70px;height:80px;
         margin-top:12px;
     }    
     .avatar{
@@ -169,7 +169,7 @@
     }
     .fast-title{color:#7a7a7a;font-size:28px}    
     .text-info{height:95px;line-height:95px;}
-    .icon-managemoney{background-image:url('./home/managemoney@2x.png');width:54px;height:27px;}
+    .icon-managemoney{background-image:url('./images/managemoney@2x.png');width:54px;height:27px;}
 </style>
 <script>
 import Vue from 'vue';

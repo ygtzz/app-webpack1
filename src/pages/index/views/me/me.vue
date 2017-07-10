@@ -131,14 +131,14 @@
     .me-banner{
         height:462px;
         .banner-top{
-            background-image:url('./common/banner-1px.png');
+            background-image:url('../common/banner-1px.png');
             background-size:100% 100%;
             background-color:#ff5a00;
             padding-top:36px;
         }
         .arc{
             height:26px;
-            background-image:url('./me/banner-me-arc.png');
+            background-image:url('./images/banner-me-arc.png');
             background-size: 100% 100%;
         }
     }
@@ -176,17 +176,17 @@
         img{border-radius:50%;}
     }
     img{width:100%;height:100%;}
-    .icon-eye{background-image:url('./me/eye@2x.png');width:44px;height:28px;}
-    .icon-envelop{background-image:url('./me/envelop.png');width:38px;height:30px;}
-    .icon-pig{background-image:url('./me/pig@2x.png');width:50px;height:50px;}
-    .icon-trade{background-image:url('./me/trade@2x.png');width:50px;height:50px;}
-    .icon-exprience{background-image:url('./me/exprience@2x.png');width:50px;height:50px;}
-    .icon-red-bag{background-image:url('./me/red-bag@2x.png');width:50px;height:50px;}
-    .icon-task{background-image:url('./me/task.png');width:34px;height:34px;}
-    .icon-invite{background-image:url('./me/invite@2x.png');width:34px;height:34px;}
-    .icon-help{background-image:url('./me/help@2x.png');width:34px;height:34px;}
-    .icon-setting{background-image:url('./me/help@2x.png');width:34px;height:34px;}
-    .icon-online-service{background-image:url('./me/online-service@2x.png');width:34px;height:34px;}
+    .icon-eye{background-image:url('./images/eye@2x.png');width:44px;height:28px;}
+    .icon-envelop{background-image:url('./images/envelop.png');width:38px;height:30px;}
+    .icon-pig{background-image:url('./images/pig@2x.png');width:50px;height:50px;}
+    .icon-trade{background-image:url('./images/trade@2x.png');width:50px;height:50px;}
+    .icon-exprience{background-image:url('./images/exprience@2x.png');width:50px;height:50px;}
+    .icon-red-bag{background-image:url('./images/red-bag@2x.png');width:50px;height:50px;}
+    .icon-task{background-image:url('./images/task.png');width:34px;height:34px;}
+    .icon-invite{background-image:url('./images/invite@2x.png');width:34px;height:34px;}
+    .icon-help{background-image:url('./images/help@2x.png');width:34px;height:34px;}
+    .icon-setting{background-image:url('./images/help@2x.png');width:34px;height:34px;}
+    .icon-online-service{background-image:url('./images/online-service@2x.png');width:34px;height:34px;}
 </style>
 <script>
 import {mapState,mapGetters,mapActions} from "vuex";

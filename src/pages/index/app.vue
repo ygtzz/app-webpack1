@@ -15,7 +15,7 @@
 <script>
 import {mapState} from 'vuex';
 import header from './widget/header.vue';
-import footer from './widget/footer.vue';
+import footer from './widget/footer/footer.vue';
 
 export default {
     created(){

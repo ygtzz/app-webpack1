@@ -5,34 +5,24 @@
 // import test from './views/test.vue';
 
 const me = resolve => {
-  require.ensure(['./views/me.vue'], () => {
-    resolve(require('./views/me.vue'))
+  require.ensure(['./views/me/me.vue'], () => {
+    resolve(require('./views/me/me.vue'))
   },'me')
 }
 const productList = resolve => {
-  require.ensure(['./views/productList.vue'], () => {
-    resolve(require('./views/productList.vue'))
+  require.ensure(['./views/productList/productList.vue'], () => {
+    resolve(require('./views/productList/productList.vue'))
   },'producsList')
 }
 const detail = resolve => {
-  require.ensure(['./views/detail.vue'], () => {
-    resolve(require('./views/detail.vue'))
+  require.ensure(['./views/detail/detail.vue'], () => {
+    resolve(require('./views/detail/detail.vue'))
   },'detail')
 }
 const home = resolve => {
-  require.ensure(['./views/home.vue'], () => {
-    resolve(require('./views/home.vue'))
+  require.ensure(['./views/home/home.vue'], () => {
+    resolve(require('./views/home/home.vue'))
   },'home')
-}
-const test = resolve => {
-  require.ensure(['./views/test.vue'], () => {
-    resolve(require('./views/test.vue'))
-  },'test')
-}
-const chart = resolve => {
-  require.ensure(['./views/chart.vue'], () => {
-    resolve(require('./views/chart.vue'))
-  },'chart')
 }
 
 export default [
@@ -56,15 +46,5 @@ export default [
         path: '/detail', 
         name:'detail',
         component: detail        
-    },
-    { 
-        path: '/test', 
-        name:'test',
-        component: test        
-    },
-    { 
-        path: '/chart', 
-        name:'chart',
-        component: chart        
     }
 ];

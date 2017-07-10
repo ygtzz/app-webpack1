@@ -1,6 +1,6 @@
 <template>
     <div class="footer">
-        <router-link :class="{'active':sNavActiveName==item.name}" v-for="item in aNav" :to="{name:item.name}">
+        <router-link :class="{'active':sNavActiveName==item.name}" v-for="item in aNav" :key="'nav' + item" :to="{name:item.name}">
             <div @click="fNavClick(item)" class="inner">
                 <i class="icon" :class="[item.icon]"></i>
                 <p class="mt5" v-text="item.text"></p>
@@ -63,13 +63,13 @@ export default {
         a.active{
             color:#ff8200;
             .icon-home{
-                background-image:url('./footer/home-active@2x.png');
+                background-image:url('./images/home-active@2x.png');
             }
             .icon-finance{
-                background-image:url('./footer/finance-active@2x.png');
+                background-image:url('./images/finance-active@2x.png');
             }
             .icon-me{
-                background-image:url('./footer/me-active.png');
+                background-image:url('./images/me-active.png');
             }
         }
         p{transform:scale(0.9)}
@@ -81,16 +81,16 @@ export default {
             font-family: PingFang SC, Hiragino Sans GB, Arial, Microsoft YaHei, Helvetica;
         }
         .icon-home{
-            background-image:url('./footer/home@2x.png');height:43px;width:43px;
-            &.active{background-image:url('./footer/home-active@2x.png');}
+            background-image:url('./images/home@2x.png');height:43px;width:43px;
+            &.active{background-image:url('./images/home-active@2x.png');}
         }
         .icon-finance{
-            background-image:url('./footer/finance@2x.png');height:43px;width:43px;
-            &.active{background-image:url('./footer/finance-active@2x.png')}
+            background-image:url('./images/finance@2x.png');height:43px;width:43px;
+            &.active{background-image:url('./images/finance-active@2x.png')}
         }
         .icon-me{
-            background-image:url('./footer/me@2x.png');height:43px;width:43px;
-            &.active{background-image:url('./footer/me-active.png')}
+            background-image:url('./images/me@2x.png');height:43px;width:43px;
+            &.active{background-image:url('./images/me-active.png')}
         }
     }
 </style>

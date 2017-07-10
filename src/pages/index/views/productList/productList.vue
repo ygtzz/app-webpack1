@@ -51,7 +51,7 @@
     }
     .productList-banner{position:relative;
             color:#fff;
-            background-image:url('./productList/banner-bg.png');
+            background-image:url('./images/banner-bg.png');
             .banner-inner{height:100%;width:100%;padding-top:68px;padding-bottom:50px;background-color:rgba(0,0,0,.65);}
             .title2{margin-top:18px;}   
             .btn-wrap{margin-top:39px;}
@@ -81,14 +81,14 @@
         .icon{background-color:#ffa200;}
         .text{padding-left:0px;padding-right:7px;line-height:36px;}
     }
-    .icon-short{background-image:url('./productList/rmb@2x.png');height:100%;width:35px;
+    .icon-short{background-image:url('./images/rmb@2x.png');height:100%;width:35px;
         background-size:25px 23px;}
-    .icon-medium{background-image:url('./productList/dollar@2x.png');background-size:25px 23px;}
-    .icon-long{background-image:url('./productList/diamond@2x.png');background-size:25px 23px;}
+    .icon-medium{background-image:url('./images/dollar@2x.png');background-size:25px 23px;}
+    .icon-long{background-image:url('./images/diamond@2x.png');background-size:25px 23px;}
     
-    .icon-start-sell{background-image:url('./productList/begin-sell@2x.png');
+    .icon-start-sell{background-image:url('./images/begin-sell@2x.png');
         width:100px;height:105px;position:absolute;bottom:0;right:0;}
-    .icon-sell-out{background-image:url('./productList/sell-out@2x.png');
+    .icon-sell-out{background-image:url('./images/sell-out@2x.png');
         width:100px;height:105px;position:absolute;bottom:0;right:0;}
 </style>
 <script>
