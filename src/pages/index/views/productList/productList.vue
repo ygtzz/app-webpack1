@@ -94,6 +94,10 @@
 <script>
 import {mapState,mapGetters,mapActions} from "vuex";
 import {fNotifyError} from 'widget/util/util';
+import api from 'apiConfig/apiConfig';
+
+console.log('productList apiConfig')
+console.log(api)
 
 export default {
     name:'v-productList',

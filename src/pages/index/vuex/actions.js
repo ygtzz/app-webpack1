@@ -1,10 +1,14 @@
 import {types} from './mutation-types';
 import Vue from 'vue';
 import url from './url';
+import api from 'apiConfig/apiConfig';
+
+console.log(api)
 
 export function fGetUserInfo({commit},payload) {
     commit(types['getUserInfo.start']);
-    return Vue.http.get(url['getUserInfo'],{params:payload}).then(function(res) {
+    var url = api['getBankInfo'];//url['getUserInfo']
+    return Vue.http.get(url,{params:payload}).then(function(res) {
         commit(types['getUserInfo.ok'], res.data.data);
     }).catch(function(err){
         commit(types['getUserInfo.error'],err);
