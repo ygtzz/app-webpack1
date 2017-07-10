@@ -7,7 +7,7 @@
                 <router-view></router-view>
             </section>
             <footer class="bottom-fixed">
-                 <c-footer></c-footer>
+                 <c-footer :routeName="routeName"></c-footer>
             </footer>
         </div>
     </div>
@@ -28,7 +28,13 @@ export default {
     data(){
         return {
             bShowWelcome:false,
-            bPc:false
+            bPc:false,
+            routeName:''
+        }
+    },
+    watch:{
+        '$route'(to,from){
+            this.routeName = to.name;
         }
     },
     computed:{

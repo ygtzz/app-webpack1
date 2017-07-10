@@ -3,6 +3,7 @@ var CleanWebpackPlugin = require('clean-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 var config = require('./config');
 var merge = require('lodash/merge');
+var path = require('path');
 var sBase = config.sBase;
 
 var aPlugin = [];
@@ -22,6 +23,7 @@ module.exports = {
         filename: '[name].js',
         chunkFilename: "[name].js"
     },
+    recordsPath: path.resolve(__dirname, '../../recordsPath.json'), 
     module: {
         loaders: [
             {test: /\.(js|jsx)$/, loader: "babel", exclude: /node_modules/},

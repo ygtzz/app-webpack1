@@ -14,6 +14,12 @@ import Vue from "vue";
 export default {
     name:'c-footer',
     className: 'footer',
+    props:{
+        routeName:{
+            type:String,
+            required:true
+        }
+    },
     data(){
         return {
             aNav:[
@@ -34,6 +40,12 @@ export default {
                 }
             ],
             sNavActiveName:'home'
+        }
+    },
+    watch:{
+        routeName:function(val){
+            console.log('val ' + val)
+            this.sNavActiveName = val;
         }
     },
     methods:{

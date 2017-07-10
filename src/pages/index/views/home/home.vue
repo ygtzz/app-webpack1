@@ -20,7 +20,7 @@
                         <p class="f40 white">提取绑卡，理财快人一步</p>
                     </div>
                     <div class="bind-wrap tc">
-                        <button class="btn btn-bind">绑定银行卡</button>
+                        <button @click="fBindCard" class="btn btn-bind">绑定银行卡</button>
                     </div>
                 </div>
                 <div class="arc"></div>
@@ -248,6 +248,11 @@ export default {
             else{
                 user.classList.remove('user-fix');
             }
+        },
+        fBindCard(){
+            this.$router.push({
+                path:'/detail'
+            });
         }
     },
     components:{
