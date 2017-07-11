@@ -16,10 +16,10 @@ import {types} from 'index/vuex/mutation-types'
 // import toast from 'vue-easy-toast';
 import toast from 'widget/toast';
 
-if(__DEV__){
-    const eruda = require('eruda');
-    eruda.init();
-}
+// if(__DEV__){
+//     const eruda = require('eruda');
+//     eruda.init();
+// }
 
 Vue.component('c-cHeader',cHeader);
 

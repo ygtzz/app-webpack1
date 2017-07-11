@@ -1,5 +1,5 @@
 <template>
-    <div class="footer">
+    <div class="footer" v-show="bShowFooter">
         <router-link :class="{'active':sNavActiveName==item.name}" v-for="item in aNav" :key="'nav' + item" :to="{name:item.name}">
             <div @click="fNavClick(item)" class="inner">
                 <i class="icon" :class="[item.icon]"></i>
@@ -17,35 +17,50 @@ export default {
     props:{
         routeName:{
             type:String,
-            required:true
+            default:''
         }
     },
     data(){
         return {
             aNav:[
-                {
-                    name:'home',
+                 {
+                    name:'project',
                     icon:'icon-home',
-                    text:'首页'
+                    text:'项目'
                 },
                 {
-                    name:'finance',
+                    name:'wallet',
                     icon:'icon-finance',
-                    text:'理财'
-                },
-                {
-                    name:'me',
-                    icon:'icon-me',
-                    text:'我的'
+                    text:'钱包'
                 }
+                // {
+                //     name:'home',
+                //     icon:'icon-home',
+                //     text:'首页'
+                // },
+                // {
+                //     name:'finance',
+                //     icon:'icon-finance',
+                //     text:'理财'
+                // },
+                // {
+                //     name:'me',
+                //     icon:'icon-me',
+                //     text:'我的'
+                // }
             ],
-            sNavActiveName:'home'
+            sNavActiveName:'project'
         }
     },
     watch:{
         routeName:function(val){
             console.log('val ' + val)
             this.sNavActiveName = val;
+        }
+    },
+    computed:{
+        bShowFooter(){
+            return this.sNavActiveName == 'project' || this.sNavActiveName == 'wallet';
         }
     },
     methods:{
@@ -66,7 +81,7 @@ export default {
         a:link,a:visited,a:hover,a:active{color:#929292}
         a{
             display:inline-block;
-            width:32%;
+            width:44%;
             text-decoration:none;
             cursor:pointer;
             padding-top:16px;
