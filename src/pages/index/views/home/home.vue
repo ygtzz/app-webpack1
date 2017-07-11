@@ -27,7 +27,7 @@
             </div>
             <div class="slide-wrap">
                 <mt-swipe class="slide-list" :auto="4000">
-                    <mt-swipe-item class="slide" v-for="item in model.bannerList">
+                    <mt-swipe-item class="slide" v-for="(item,index) in model.bannerList" :key="'slide' + index">
                         <img :src="item.protoMongoFileId">
                     </mt-swipe-item>
                 </mt-swipe>
@@ -40,7 +40,7 @@
             <div class="body">
                 <div ref="fastWrapper" class="fast-wrap">
                     <ul class="fast-list">
-                        <li class="fast-item" v-for="item in model.fastData.data">
+                        <li class="fast-item" v-for="(item,index) in model.fastData.data" :key="'fastItem' + index">
                             <p class="fast-title">{{item.name}}({{item.days}})</p>
                             <p class="c-orange f40">2.6%~3.1%</p>
                         </li>
@@ -69,7 +69,7 @@
                 </div>
             </div>
         </div>
-        <div v-for="item in model.oldData.data" class="panel choice">
+        <div v-for="(item,index) in model.oldData.data" :key="'oldItem' + index" class="panel choice">
             <div class="header">
                 <span class="f28 g3" v-text="item.title"></span>
                 <span class="r">
