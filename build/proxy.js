@@ -1,4 +1,8 @@
 // var target = 'http://t1.vlicai.yinker.net/wb/app/h5';
+var api = require('../src/apiConfig/apiConfig');
+
+console.log('proxy')
+console.log(api)
 
 module.exports = {
     // '/index/requestIndexData': {
