@@ -36,7 +36,6 @@
     "mint-ui": "^2.1.0",
     "mockjs": "^1.0.0",
     "vue": "^2.0.3",
-    "vue-easy-toast": "^1.0.0",
     "vue-resource": "^1.2.0",
     "vue-router": "^2.0.1",
     "vuex": "^2.0.0",

@@ -5906,10 +5906,6 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
-vue-easy-toast@^1.0.0:
-  version "1.0.0"
-  resolved "http://registry.npm.taobao.org/vue-easy-toast/download/vue-easy-toast-1.0.0.tgz#b3ac7820c37c0a77bdcf5632e9f861c743f0ae2e"
-
 vue-hot-reload-api@^2.0.1:
   version "2.0.8"
   resolved "http://registry.npm.taobao.org/vue-hot-reload-api/download/vue-hot-reload-api-2.0.8.tgz#b3ba6a9a443d561b14f2785c8ea056618cb2faa3"

@@ -13,7 +13,8 @@ import App from './app.vue';
 //common Component
 import cHeader from './widget/cHeader.vue';
 import {types} from 'index/vuex/mutation-types'
-import toast from 'vue-easy-toast';
+// import toast from 'vue-easy-toast';
+import toast from 'widget/toast';
 
 if(__DEV__){
     const eruda = require('eruda');
