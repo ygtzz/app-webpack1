@@ -75,7 +75,6 @@ export default {
         padding-bottom:$footHeight;
     }
     .bottom-fixed{
-        border-top: 1px solid #E7E7E7;
         height:$footHeight;
         line-height:1;
         position:absolute;

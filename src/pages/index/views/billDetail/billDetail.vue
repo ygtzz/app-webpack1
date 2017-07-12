@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h2>钱包</h2>
-        <router-link to="importNumWallet">导入数字钱包</router-link>
+        <h2>账单明细</h2>
+        <router-link to="wallet">返回</router-link>
     </div>
 </template>
 <style lang="sass" scoped>

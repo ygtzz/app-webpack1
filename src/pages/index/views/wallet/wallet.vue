@@ -12,6 +12,9 @@
                 <router-link to="importNumWallet">导入数字钱包</router-link>
             </li>
             <li>
+                <router-link to="walletReceipt">钱包收款</router-link>
+            </li>
+            <li>
                 <router-link to="billDetail">账单明细</router-link>
             </li>
             <li>

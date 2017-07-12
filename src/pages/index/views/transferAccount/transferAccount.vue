@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>转账</h2>
-        <!--<router-link to="importNumWallet">导入数字钱包</router-link>-->
+        <router-link to="wallet">返回</router-link>
     </div>
 </template>
 <style lang="sass" scoped>

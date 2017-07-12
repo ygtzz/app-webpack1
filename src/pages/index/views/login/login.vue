@@ -1,7 +1,14 @@
 <template>
     <div>
-        <h2>绑定银行卡</h2>
-        <router-link to="bank">银行卡</router-link>
+        <h2>登录</h2>
+        <ul>
+            <li>
+                <router-link to="register">注册账号</router-link>
+            </li>
+            <li>
+                <router-link to="">忘记密码</router-link>
+            </li>
+        </ul>
     </div>
 </template>
 <style lang="sass" scoped>

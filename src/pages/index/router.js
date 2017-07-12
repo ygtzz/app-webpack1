@@ -86,10 +86,25 @@ const walletLife = resolve => {
     resolve(require('./views/walletLife/walletLife.vue'))
   },'walletLife')
 }
+const walletReceipt = resolve => {
+  require.ensure(['./views/walletReceipt/walletReceipt.vue'], () => {
+    resolve(require('./views/walletReceipt/walletReceipt.vue'))
+  },'walletReceipt')
+}
 const transferAccount = resolve => {
   require.ensure(['./views/transferAccount/transferAccount.vue'], () => {
     resolve(require('./views/transferAccount/transferAccount.vue'))
   },'transferAccount')
+}
+const login = resolve => {
+  require.ensure(['./views/login/login.vue'], () => {
+    resolve(require('./views/login/login.vue'))
+  },'login')
+}
+const register = resolve => {
+  require.ensure(['./views/register/register.vue'], () => {
+    resolve(require('./views/register/register.vue'))
+  },'register')
 }
 
 const me = resolve => {
@@ -114,7 +129,19 @@ const home = resolve => {
 }
 
 export default [
-    { path: '/', redirect:'/home'},
+    { path: '/', redirect:'/project'},
+    { 
+        path: '/login', 
+        name:'login',
+        component: login,//登录页面
+        title:'登录'
+    },
+    { 
+      path: '/register', 
+      name:'register',
+      component: register,//注册页面
+      title:'注册账户'
+    },
     { 
         path: '/project', 
         name:'project',
@@ -224,6 +251,12 @@ export default [
         title:'钱包生活'
     }, 
     { 
+      path: '/walletReceipt', 
+      name:'walletReceipt',
+      component: walletReceipt,//钱包收款页面
+      title:'钱包收款'
+    }, 
+    { 
         path: '/transferAccount', 
         name:'transferAccount',
         component: transferAccount,//转账页面
@@ -250,3 +283,4 @@ export default [
         component: detail        
     }
 ];
+

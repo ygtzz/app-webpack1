@@ -77,6 +77,7 @@ export default {
         text-align: center;
         color:#5D656B;
         background-color:#f9f9f9;
+        border-top: 1px solid #E7E7E7;
         font-size:24px;
         a:link,a:visited,a:hover,a:active{color:#929292}
         a{

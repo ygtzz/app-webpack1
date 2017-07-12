@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h2>钱包</h2>
-        <router-link to="realNameAuth">实名认证</router-link>
+        <h2>个人中心</h2>
+        <router-link to="realNameAuth">实名认证</router-link><br />
         <router-link to="passwordManage">密码管理</router-link>
     </div>
 </template>

@@ -1,7 +1,11 @@
 <template>
     <div>
-        <h2>绑定银行卡</h2>
-        <router-link to="bank">银行卡</router-link>
+        <h2>注册</h2>
+        <ul>
+            <li>
+                <router-link to="login">登录</router-link>
+            </li>
+        </ul>
     </div>
 </template>
 <style lang="sass" scoped>
