@@ -14,6 +14,9 @@ if(config.enableRem){
     aPostcss.push(require('postcss-plugin-px2rem')(config.px2remOptions));
     aPostcss.push(require('postcss-flexible')(config.px2rem));    
 }
+aPostcss.push(require('postcss-assets')({
+    relative: true
+}));
 
 module.exports = {
     entry: config.entry,

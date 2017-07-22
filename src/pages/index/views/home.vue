@@ -124,7 +124,11 @@
     .user{height:106px;padding-left:25px;padding-right:20px;line-height:106px;width:100%;
         top:0;background-image:url('./common/banner-1px.png');}
     .user-fix{position:fixed;transform:scale(1);z-index:9999;top:0;left:0;}
-    .icon-tree{background-image:url('./home/tree@2x.png');width:70px;height:80px;
+    .icon-tree{
+        background-image:url('./home/tree@2x.png');
+        /* width:70px;height:80px; */
+        width:width('./home/tree@2x.png');
+        height:height('./home/tree@2x.png');
         margin-top:12px;
     }    
     .avatar{
