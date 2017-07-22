@@ -107,7 +107,7 @@ export default {
     },
     watch:{
         'model.err'(val){
-            this.fNotifyError(this,val);
+            fNotifyError(this,val);
         }
     },
     computed:{

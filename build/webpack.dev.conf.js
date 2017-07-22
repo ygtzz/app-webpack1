@@ -38,7 +38,7 @@ module.exports = merge(baseWebapckConfig,{
             {test: /\.scss$/, loader:'style!css?importLoaders=2!postcss!sass'},
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                loader: 'url?limit=10000&name=/static/images/[name].[ext]'
+                loader: 'url?limit=1&name=/static/images/[name].[ext]'
             }
         ]
     },

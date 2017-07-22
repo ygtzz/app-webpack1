@@ -219,7 +219,7 @@ export default {
             });
         },
         'model.err'(val){
-            this.fNotifyError(this,val);
+            fNotifyError(this,val);
         }
     },
     computed:{
