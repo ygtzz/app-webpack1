@@ -3,6 +3,7 @@ var CleanWebpackPlugin = require('clean-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 var config = require('./config');
 var merge = require('lodash/merge');
+var path = require('path');
 var sBase = config.sBase;
 
 var aPlugin = [];
@@ -21,7 +22,9 @@ aPostcss.push(require('postcss-assets')({
 module.exports = {
     entry: config.entry,
     output: {
-        path: config.sDist,
+        // path: config.sDist,
+        path:path.resolve(__dirname, '../dist'),
+        publicPath:'/',
         filename: '[name].js',
         chunkFilename: "[name].js"
     },

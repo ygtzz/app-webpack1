@@ -126,7 +126,8 @@ const state = {
         "totalAmount": 23418.97,
         "accountType": 3,
         "userCopywrite": "s123",
-        "photo": "http://tva1.sinaimg.cn/crop.0.0.664.664.50/005TtEDDjw8f77epfuemlj30ig0ig74g.jpg"
+        // "photo": "http://tva1.sinaimg.cn/crop.0.0.664.664.50/005TtEDDjw8f77epfuemlj30ig0ig74g.jpg"
+        "photo": "./home/tree@2x.png"        
     }
 }
 const mutations = {

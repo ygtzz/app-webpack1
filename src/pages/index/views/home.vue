@@ -9,7 +9,8 @@
                 <div class="user-wrap">
                     <div ref="user" class="user fix f24">
                         <span class="icon avatar dib vm">
-                            <img :src="model.user.photo" alt="avatar">
+                             <img :src="model.user.photo" alt="avatar"> 
+                            <!-- <img src="./home/tree@2x.png" alt="" /> -->
                         </span>
                         <span class="name vm" v-text="model.user.nickName"></span>
                         <span class="icon r icon-tree tree"></span>
