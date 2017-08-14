@@ -8,10 +8,8 @@ import 'static/css/quick-layout.css';
 import 'static/css/site.css';
 import './index.scss';
 import routeConfig from './router.js';
-import JChart from './JChart.js';
 //import FastClick from 'fastclick';
 import App from './app.vue';
-//common Component
 import cHeader from './widget/cHeader.vue';
 import {types} from 'index/vuex/mutation-types'
 import toast from 'vue-easy-toast';
@@ -34,13 +32,10 @@ const router = new VueRouter({
     mode:'hash',
     routes:routeConfig
 });
-//add mock cookie
-cookies.set('wlcUserId',escape("886E41417490442887380A7F7A8B48B5"))
 
 router.beforeEach((to, from, next) => {
   if(to.path === '/home'){
-      //mock add cookie
-      const userId = cookies.get('wlcUserId');
+      const userId = 'lalala';
       if(!userId){
           alert('no user')
       }

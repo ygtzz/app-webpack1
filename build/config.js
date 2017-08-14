@@ -22,8 +22,8 @@ module.exports = {
     },
     prod: {
         path: {
-            script: '/static/scripts/',
-            style: '/static/style/'
+            script: '/public/scripts/',
+            style: '/public/style/'
         }
     },
     designWidth:750,

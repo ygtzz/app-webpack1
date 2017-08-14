@@ -8,13 +8,13 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var aPlugin = [
     // new OpenBrowserPlugin({ url: 'http://localhost:' + config.dev.port }),
+    // new webpack.HotModuleReplacementPlugin(),
     //for dev show static images
-    // new CopyWebpackPlugin([{ from: 'src/static', to: 'static' }]),
+    new CopyWebpackPlugin([{ from: 'src/static', to: 'static' }]),
     new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('development'),
         __DEV__: JSON.stringify(JSON.parse('true'))
     }),
-    // new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
 ];
 
@@ -38,7 +38,7 @@ module.exports = merge(baseWebapckConfig,{
             {test: /\.scss$/, loader:'style!css?importLoaders=2!postcss!sass'},
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                loader: 'url?limit=1&name=/static/images/[name].[ext]'
+                loader: 'url?limit=1&name=static/images/[name].[ext]'
             }
         ]
     },

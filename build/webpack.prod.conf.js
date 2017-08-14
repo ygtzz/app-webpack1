@@ -49,7 +49,7 @@ var aPlugin = [
 //html webpack
 aEntry.forEach(function(item) {
     aPlugin.push(new HtmlWebpackPlugin({
-        filename: item + '.html',
+        filename: 'views/' + item + '.html',
         template: config.sBase + 'pages/' + item + '/' + item + '.ejs',
         chunks: [item, 'vendor', 'common'],
         inject: 'body',
@@ -79,13 +79,13 @@ module.exports = merge(baseWebapckConfig, {
             {
                 test: /\.(svg)(\?.*)?$/,
                 loaders: [
-                    'url?limit=2048&name=/static/images/[name].[ext]'
+                    'url?limit=2048&name=/public/images/[name].[ext]'
                 ]
             },
             {
                 test: /\.(png|jpe?g|gif)(\?.*)?$/,
                 loaders: [
-                    'url?limit=2048&name=/static/images/[name].[ext]',
+                    'url?limit=2048&name=/public/images/[name].[ext]',
                     'image-webpack'
                 ]
             }
