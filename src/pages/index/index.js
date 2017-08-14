@@ -5,7 +5,6 @@ import store from './vuex/store';
 import cookies from 'js-cookie';
 import 'static/css/normalize.css';
 import 'static/css/quick-layout.css';
-import 'static/css/font-awesome.min.css';
 import 'static/css/site.css';
 import './index.scss';
 import routeConfig from './router.js';
