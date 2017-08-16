@@ -17,11 +17,15 @@ var devMiddleware = require('webpack-dev-middleware')(compiler, {
   stats: {
     colors: true,
     chunks: false,
-    progress: true
+    progress: true,
+    hot: true
   }
 })
 
-var hotMiddleware = require('webpack-hot-middleware')(compiler)
+var hotMiddleware = require('webpack-hot-middleware')(compiler, {
+  log: () => {},
+  heartbeat: 2000
+})
 // force page reload when html-webpack-plugin template changes
 compiler.plugin('compilation', function (compilation) {
   compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {
@@ -55,6 +59,8 @@ app.use(staticPath, express.static('./'));
 app.get('/', function(req, res){
   res.send('hello world');
 });
+
+
 
 module.exports = app.listen(port, function (err) {
   if (err) {

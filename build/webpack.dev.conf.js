@@ -8,7 +8,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var aPlugin = [
     // new OpenBrowserPlugin({ url: 'http://localhost:' + config.dev.port }),
-    // new webpack.HotModuleReplacementPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     //for dev show static images
     new CopyWebpackPlugin([{ from: 'src/static', to: 'static' }]),
     new webpack.DefinePlugin({
@@ -30,6 +30,10 @@ aEntry.forEach(function(item){
         title: item + ' Page'
     }));
 });
+
+aEntry.forEach(function (name) {
+  baseWebapckConfig.entry[name] = ['./build/dev-client'].concat(baseWebapckConfig.entry[name])
+})
 
 module.exports = merge(baseWebapckConfig,{
     module: {
