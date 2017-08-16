@@ -60,6 +60,13 @@ app.get('/', function(req, res){
   res.send('hello world');
 });
 
+app.get('/home/data', function(req, res){
+  res.json({
+    name:'xiaoming',
+    age:30,
+    list:[{name:'lilei',age:33},{name:'hanmei',age:32}]
+  });
+});
 
 
 module.exports = app.listen(port, function (err) {

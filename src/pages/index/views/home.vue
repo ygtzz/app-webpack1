@@ -192,7 +192,7 @@ export default {
     created() {
         const self = this;
         this.fixUserHeader = _.throttle(this.fixUser,50);
-        this.fRequestIndexData({userId:this.userId});
+        // this.fRequestIndexData({userId:this.userId});
         this.$nextTick(() => {
             this.fastScroll = new BScroll(this.$refs.fastWrapper,{
                 click: true,
@@ -202,6 +202,7 @@ export default {
                 self.fixUserHeader();
             }
         });
+        this.req();
     },
     mounted(){
         this.nNoticeHeight = this.$refs.notice.offsetHeight;
@@ -239,6 +240,16 @@ export default {
         ...mapActions({
             fRequestIndexData:'fRequestIndexData'
         }),
+        req(){
+            this.$http({
+                url:'/home/data',
+                method:'get'
+            }).then((data) => {
+                console.log(data)
+            }).catch((err) => {
+                console.log(err);
+            })
+        },
         fCloseNotice(){
             this.bShowNotice = false;
         },
