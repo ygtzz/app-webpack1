@@ -6031,6 +6031,10 @@ vue@^2.0.3:
   version "2.1.10"
   resolved "http://registry.npm.taobao.org/vue/download/vue-2.1.10.tgz#c9235ca48c7925137be5807832ac4e3ac180427b"
 
+vue@^2.4.4:
+  version "2.4.4"
+  resolved "http://registry.npm.taobao.org/vue/download/vue-2.4.4.tgz#ea9550b96a71465fd2b8b17b61673b3561861789"
+
 vuex-router-sync@^3.0.0:
   version "3.0.0"
   resolved "http://registry.npm.taobao.org/vuex-router-sync/download/vuex-router-sync-3.0.0.tgz#3b632baa86cc55192ab408b8d52e6490380df3d7"
@@ -6052,6 +6056,12 @@ watchpack@^0.2.1:
     async "^0.9.0"
     chokidar "^1.0.0"
     graceful-fs "^4.1.2"
+
+we-vue-slider@^0.0.2:
+  version "0.0.2"
+  resolved "http://registry.npm.taobao.org/we-vue-slider/download/we-vue-slider-0.0.2.tgz#0692953d86f9f7b3bb89f8f2075b8376bc61fa4c"
+  dependencies:
+    vue "^2.4.4"
 
 webpack-chunk-hash@^0.4.0:
   version "0.4.0"

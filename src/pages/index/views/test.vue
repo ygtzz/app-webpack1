@@ -1,13 +1,11 @@
 <template>
     <div class="test stage">
         <h2>test</h2>
-        <c-swiper class="swiper" :loop="true">
-            <c-swiperItem v-for="n in list">
+        <c-slider class="swiper" :loop="true">
+            <c-sliderItem v-for="n in list" :key="n">
                 <div class="slide">{{n}}</div>
-            </c-swiperItem>
-        </c-swiper>
-        <button @click="fToast">toast</button>
-        
+            </c-sliderItem>
+        </c-slider>
     </div>
 </template>
 <style lang="sass" scoped>
@@ -20,21 +18,18 @@
 </style>
 <script>
 import Vue from 'vue';
-import swiper from 'index/widget/swiper.vue';
-import swiperItem from 'index/widget/swiperItem.vue';
+import {slider, sliderItem } from 'we-vue-slider';
+import 'we-vue-slider/dist/vue-slider.css';
 
-console.log(swiper.name);
-console.log(swiperItem.name);
-
-Vue.component(swiper.name, swiper);
-Vue.component(swiperItem.name, swiperItem);
+Vue.component('c-slider',slider);
+Vue.component('c-sliderItem',sliderItem);
 
 export default {
     name:'v-test',
     created() {
-        // setTimeout(() => {
-        //     this.list = [1,2,3,4];
-        // },3000);
+        setTimeout(() => {
+            this.list = [1,2,3,4];
+        },3000);
     },
     data() {
       return {
@@ -48,24 +43,7 @@ export default {
        
     },
     methods:{
-        fToast(){
-this.$toast('lalala1',{
-    mode:'queue',
-    duration:2000
-});
-this.$toast('lalala2',{
-    mode:'queue',
-    duration:2000
-});
-this.$toast('lalala3',{
-    mode:'queue',
-    duration:2000
-});
-this.$toast('lalala4',{
-    mode:'queue',
-    duration:2000
-});
-        }
+       
     },
     components:{
         
