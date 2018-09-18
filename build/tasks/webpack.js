@@ -7,7 +7,7 @@ module.exports = function(gulp, plugin, config) {
     gulp.task('webpack', function(callback) {
         var spinner = ora('building for production...')
         spinner.start();
-
+        console.log(webpackProConfig.entry);
         webpack(webpackProConfig, function(err, stats) {
             spinner.stop();
             if (err) {

@@ -15,6 +15,8 @@ import App from './app.vue';
 import cHeader from './widget/cHeader.vue';
 import {types} from 'index/vuex/mutation-types'
 import toast from 'vue-easy-toast';
+import assign from 'object-assign';
+
 
 if(__DEV__){
     const eruda = require('eruda');

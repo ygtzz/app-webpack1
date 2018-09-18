@@ -1,11 +1,11 @@
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var AssetsPlugin = require('assets-webpack-plugin');
 var ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
 var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 var merge = require('webpack-merge');
 var WebpackChunkHash = require('webpack-chunk-hash');
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 var baseWebapckConfig = require('./webpack.base.conf');
 var config = require('./config');
 
@@ -31,11 +31,6 @@ var aPlugin = [
     }),
     new LodashModuleReplacementPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
-    new AssetsPlugin({
-      filename: config.sDest + '/map.json',
-      prettyPrint: true,
-      includeManifest: false
-    }),
     new ChunkManifestPlugin({
       filename: "chunk-manifest.json",
       manifestVariable: "webpackManifest"
@@ -44,6 +39,7 @@ var aPlugin = [
     new WebpackChunkHash({algorithm: 'md5'}),
     // DedupePlugin disabled. It breaks module IDs across builds (even when using recordsPath option)
     //new webpack.optimize.DedupePlugin() 
+    new BundleAnalyzerPlugin()
 ];
 
 //html webpack
@@ -65,7 +61,7 @@ aEntry.forEach(function(item) {
 
 module.exports = merge(baseWebapckConfig, {
     entry: {
-        vendor: ['vue', 'vuex', 'vue-router', 'vuex-router-sync','vue-resource']
+        vendor: ['vue','vuex', 'vue-router', 'vuex-router-sync','vue-resource']
     },
     output: {
         path: config.sDest,
@@ -117,5 +113,5 @@ module.exports = merge(baseWebapckConfig, {
         }
     },
     plugins: aPlugin,
-    devtool: 'cheap-module-source-map'
+    // devtool: 'cheap-module-source-map'
 });
